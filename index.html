@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rowan Huang | Strategy & Integration Portfolio</title>
+    <title>Rowan Huang | 策略與整合作品集</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -12,8 +12,11 @@
             colors: {
               tomoBlue: '#227BAC',       /* Tomofun 科技藍 */
               tomoYellow: '#F3C64E',     /* Tomofun 活力黃 */
-              tomoLightYellow: '#ECE265',/* 輔助淺黃 */
               tomoGray: '#F5F5F7',       /* 質感灰背景 */
+              darkBlue: '#1a5f8a',       /* 深一點的藍，用於文字 */
+            },
+            fontFamily: {
+              sans: ['Helvetica Neue', 'Arial', 'Microsoft JhengHei', 'sans-serif'],
             }
           }
         }
@@ -21,116 +24,146 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        .fade-up { animation: fadeUp 1s ease-out; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
         
-        /* 氣泡浮動動畫 */
-        .float-bubble { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        
+        /* 策略矩陣的卡片效果 */
+        .strategy-card {
+            transition: all 0.3s ease;
+        }
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
-<body class="bg-tomoGray text-gray-800 font-sans selection:bg-tomoYellow selection:text-tomoBlue">
+<body class="bg-white text-gray-800 font-sans selection:bg-tomoYellow selection:text-tomoBlue">
 
-    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-gray-100">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="w-3 h-3 bg-tomoBlue rounded-full"></div>
                 <div class="w-3 h-3 bg-tomoYellow rounded-full"></div>
                 <h1 class="text-xl font-bold tracking-widest text-gray-900 ml-2">ROWAN HUANG</h1>
             </div>
-            <div class="space-x-8 text-sm font-medium hidden md:block">
-                <a href="#integration" class="hover:text-tomoBlue transition">Integration</a>
-                <a href="#product" class="hover:text-tomoBlue transition">Product</a>
-                <a href="#data" class="hover:text-tomoBlue transition">Data Insight</a>
-                <a href="mailto:hungchungwm@gmail.com" class="px-5 py-2.5 bg-tomoBlue text-white rounded-full hover:bg-blue-800 transition shadow-md hover:shadow-lg">Contact Me</a>
+            <div class="space-x-8 text-sm font-bold text-gray-600 hidden md:block">
+                <a href="#philosophy" class="hover:text-tomoBlue transition">核心策略</a>
+                <a href="#integration" class="hover:text-tomoBlue transition">系統整合</a>
+                <a href="#product" class="hover:text-tomoBlue transition">產品開發</a>
+                <a href="#data" class="hover:text-tomoBlue transition">數據洞察</a>
             </div>
         </div>
     </nav>
 
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 fade-up pt-16">
-        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-tomoBlue bg-blue-50 rounded-full uppercase border border-blue-100">
-            Business Strategy × Technical Execution
-        </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 text-gray-900 leading-tight">
-            Bridging <span class="text-tomoBlue">Data</span> <br>
-            & <span class="relative inline-block">
-                <span class="relative z-10">Real-World Application</span>
-                <span class="absolute bottom-2 left-0 w-full h-3 bg-tomoYellow/50 -z-0"></span>
-            </span>
-        </h1>
-        <p class="text-xl text-gray-600 max-w-2xl mb-10 leading-relaxed">
-            不只是策略規劃，更具備落地執行的技術力。<br>
-            專注於營運流程優化、系統整合與數據驅動決策。
-        </p>
-        <div class="flex gap-4">
-            <a href="#integration" class="px-8 py-4 bg-tomoYellow text-gray-900 font-bold rounded-xl hover:bg-yellow-400 transition shadow-lg transform hover:-translate-y-1">
-                查看整合案例
-            </a>
-            <a href="#product" class="px-8 py-4 bg-white border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:border-tomoBlue hover:text-tomoBlue transition">
-                體驗互動系統
-            </a>
+    <header class="h-screen min-h-[600px] flex flex-col justify-center items-center text-center px-4 relative overflow-hidden bg-tomoGray/30">
+        
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-tomoBlue via-tomoYellow to-tomoBlue"></div>
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-tomoYellow/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto mt-10">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-6 fade-up whitespace-nowrap">
+                Bridging Data & Real-World Application
+            </h1>
+
+            <h2 class="text-2xl md:text-4xl font-black text-darkBlue mb-8 fade-up delay-100 leading-normal">
+                不只是策略規劃，<br class="md:hidden">更具備落地執行的技術力。
+            </h2>
+
+            <div class="max-w-3xl mx-auto mb-10 fade-up delay-200">
+                <p class="text-lg md:text-xl font-bold text-gray-600 leading-relaxed border-l-4 border-tomoYellow pl-6 text-left bg-white/50 py-4 rounded-r-lg shadow-sm">
+                    以營運策略與系統整合為核心，結合商控與數據分析。<br>
+                    <span class="text-tomoBlue">專注於電商營運流程優化與商品結構管理，推動效率與績效雙成長。</span>
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center fade-up delay-300">
+                <a href="#philosophy" class="px-8 py-3 bg-tomoBlue text-white font-bold rounded-lg hover:bg-blue-800 transition shadow-lg hover:shadow-tomoBlue/30 w-full md:w-auto">
+                    查看我的策略思維
+                </a>
+                <span class="text-gray-400 text-sm font-medium">Business Strategy × Technical Execution</span>
+            </div>
         </div>
     </header>
 
-    <section id="integration" class="py-24 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-start">
+    <section id="philosophy" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="text-center mb-16">
+                <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">MY PHILOSOPHY</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 text-gray-900">縱向深耕策略，橫向整合價值</h2>
+                <div class="w-16 h-1 bg-tomoYellow mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
                 
-                <div class="sticky top-32">
-                    <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">01. System Integration</span>
-                    <h2 class="text-4xl font-bold mt-3 mb-6">ERP & EC 自動化整合</h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                        <strong class="text-gray-900">痛點：</strong>部門數據脫節，人工轉檔低效導致訂單高峰期延遲。<br><br>
-                        <strong class="text-gray-900">解方：</strong>開發 VBA 自動化腳本 (ProcessData Sub)，將多平台數據流無縫串接。不需昂貴系統升級，利用現有工具即達成效率躍升。
-                    </p>
+                <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoBlue transition-colors duration-300"></div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Integration</h3>
+                        <span class="text-xs font-bold bg-gray-200 text-gray-600 px-2 py-1 rounded">系統整合</span>
+                    </div>
                     
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-5 bg-blue-50 rounded-2xl border border-blue-100">
-                            <div class="text-2xl font-bold text-tomoBlue mb-1">-66%</div>
-                            <div class="text-sm text-gray-600">ERP 導入時程</div>
-                        </div>
-                        <div class="p-5 bg-yellow-50 rounded-2xl border border-yellow-100">
-                            <div class="text-2xl font-bold text-gray-800 mb-1">+60%</div>
-                            <div class="text-sm text-gray-600">存貨準確率</div>
-                        </div>
-                        <div class="p-5 bg-gray-50 rounded-2xl border border-gray-200">
-                            <div class="text-2xl font-bold text-gray-700 mb-1">-50%</div>
-                            <div class="text-sm text-gray-500">數據產出時間</div>
-                        </div>
-                        <div class="p-5 bg-green-50 rounded-2xl border border-green-100">
-                            <div class="text-2xl font-bold text-green-600 mb-1">+2%</div>
-                            <div class="text-sm text-gray-600">營收成長</div>
-                        </div>
+                    <div class="mb-6">
+                        <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
+                        <p class="text-gray-700 font-medium leading-relaxed">
+                            解決部門數據脫節與效率低落。策略共識先行，避免團隊做白工。
+                        </p>
+                    </div>
+                    <div class="w-full h-px bg-gray-200 mb-6"></div>
+                    <div>
+                        <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
+                        <p class="text-gray-600 text-sm">
+                            利用 VBA 與自動化腳本串接 ERP/EC，將繁瑣的人工流程轉化為一鍵執行的系統邏輯。
+                        </p>
                     </div>
                 </div>
 
-                <div class="relative bg-gray-50 p-8 rounded-3xl border border-gray-200">
-                    <div class="text-center mb-8 font-bold text-gray-400 text-sm">WORKFLOW OPTIMIZATION</div>
-                    <div class="flex flex-col items-center space-y-6 relative z-10">
-                        <div class="w-full bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex justify-between items-center opacity-60">
-                            <span class="font-medium text-gray-500">Source: Raw Data (EC/ERP)</span>
-                            <span class="text-xs border px-2 py-1 rounded">Messy Format</span>
-                        </div>
-                        <div class="text-gray-300">▼</div>
-                        <div class="w-full bg-white p-6 rounded-xl shadow-lg border-l-4 border-tomoBlue transform scale-105">
-                            <div class="flex justify-between items-start mb-2">
-                                <span class="font-bold text-tomoBlue">VBA Automation Core</span>
-                                <span class="bg-tomoYellow text-xs font-bold px-2 py-1 rounded text-gray-800">Auto-Run</span>
-                            </div>
-                            <code class="block bg-gray-800 text-green-400 p-3 rounded text-xs font-mono mb-2">
-                                Sub ProcessData()<br>
-                                &nbsp;Dim ws As Worksheet<br>
-                                &nbsp;ws.Columns("A:B").Insert<br>
-                                &nbsp;Format(cell.Value, "yyyymmdd")<br>
-                                End Sub
-                            </code>
-                            <div class="text-xs text-gray-500 mt-2">自動執行：欄位對齊、日期格式化、合併單號</div>
-                        </div>
-                        <div class="text-gray-300">▼</div>
-                        <div class="w-full bg-tomoBlue p-4 rounded-xl shadow-md text-white flex justify-between items-center">
-                            <span class="font-bold">Unified Output</span>
-                            <span class="text-tomoYellow">★ Ready for Analysis</span>
-                        </div>
+                <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoYellow transition-colors duration-300"></div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Product</h3>
+                        <span class="text-xs font-bold bg-gray-200 text-gray-600 px-2 py-1 rounded">產品策略</span>
+                    </div>
+
+                    <div class="mb-6">
+                        <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
+                        <p class="text-gray-700 font-medium leading-relaxed">
+                            產品需在最適時機，以最有效方式被市場接受。實現品牌與消費者的雙贏。
+                        </p>
+                    </div>
+                    <div class="w-full h-px bg-gray-200 mb-6"></div>
+                    <div>
+                        <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
+                        <p class="text-gray-600 text-sm">
+                            利用 AI 工具 (Gemini Canvas) 快速構建原型 (如報到系統)，解決現場痛點，驗證產品價值。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoBlue transition-colors duration-300"></div>
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Data</h3>
+                        <span class="text-xs font-bold bg-gray-200 text-gray-600 px-2 py-1 rounded">數據結果</span>
+                    </div>
+
+                    <div class="mb-6">
+                        <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
+                        <p class="text-gray-700 font-medium leading-relaxed">
+                            想與行之間的落差，需憑數據為共識。數據不是終點，而是優化的起點。
+                        </p>
+                    </div>
+                    <div class="w-full h-px bg-gray-200 mb-6"></div>
+                    <div>
+                        <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
+                        <p class="text-gray-600 text-sm">
+                            建構視覺化儀表板，監控庫存周轉與毛利結構，將 Insight 轉化為具體的營收成長 (+2%)。
+                        </p>
                     </div>
                 </div>
 
@@ -138,15 +171,77 @@
         </div>
     </section>
 
-    <section id="product" class="py-24 bg-tomoGray">
+    <section id="integration" class="py-24 bg-tomoGray">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div class="sticky top-32">
+                    <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">01. System Integration</span>
+                    <h2 class="text-4xl font-bold mt-3 mb-6">ERP & EC 自動化整合</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        <strong class="text-gray-900">痛點：</strong>部門數據脫節，人工轉檔低效導致訂單高峰期延遲。<br><br>
+                        <strong class="text-gray-900">解方：</strong>開發 VBA 自動化腳本，將多平台數據流無縫串接。不需昂貴系統升級，利用現有工具即達成效率躍升。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <div class="text-2xl font-bold text-tomoBlue mb-1">-66%</div>
+                            <div class="text-sm text-gray-600">ERP 導入時程</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <div class="text-2xl font-bold text-gray-800 mb-1">+60%</div>
+                            <div class="text-sm text-gray-600">存貨準確率</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <div class="text-2xl font-bold text-gray-700 mb-1">-50%</div>
+                            <div class="text-sm text-gray-500">數據產出時間</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
+                            <div class="text-2xl font-bold text-green-600 mb-1">+2%</div>
+                            <div class="text-sm text-gray-600">營收成長</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative bg-white p-8 rounded-3xl shadow-sm border border-gray-200">
+                    <div class="text-center mb-8 font-bold text-gray-400 text-sm">WORKFLOW OPTIMIZATION</div>
+                    <div class="flex flex-col items-center space-y-6 relative z-10">
+                        <div class="w-full bg-gray-50 p-4 rounded-xl border border-gray-200 flex justify-between items-center opacity-60">
+                            <span class="font-medium text-gray-500">原始數據 (EC/ERP)</span>
+                            <span class="text-xs border px-2 py-1 rounded">格式混亂</span>
+                        </div>
+                        <div class="text-gray-300">▼</div>
+                        <div class="w-full bg-white p-6 rounded-xl shadow-lg border-l-4 border-tomoBlue transform scale-105">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="font-bold text-tomoBlue">VBA 自動化核心</span>
+                                <span class="bg-tomoYellow text-xs font-bold px-2 py-1 rounded text-gray-800">Auto-Run</span>
+                            </div>
+                            <code class="block bg-gray-800 text-green-400 p-3 rounded text-xs font-mono mb-2">
+                                Sub ProcessData()<br>
+                                &nbsp;Dim ws As Worksheet<br>
+                                &nbsp;Format(cell.Value, "yyyymmdd")<br>
+                                End Sub
+                            </code>
+                            <div class="text-xs text-gray-500 mt-2">自動執行：欄位對齊、日期格式化</div>
+                        </div>
+                        <div class="text-gray-300">▼</div>
+                        <div class="w-full bg-tomoBlue p-4 rounded-xl shadow-md text-white flex justify-between items-center">
+                            <span class="font-bold">標準化輸出</span>
+                            <span class="text-tomoYellow">★ 決策就緒</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">02. Product Development</span>
                 <h2 class="text-4xl font-bold mt-3">AI 協作開發：課程報到系統</h2>
-                <p class="mt-4 text-gray-600">運用 Gemini Canvas 與 Vibe Code，解決現場營運痛點</p>
+                <p class="mt-4 text-gray-600">運用 Gemini Canvas 與 Vibe Code，快速驗證產品價值</p>
             </div>
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row h-[500px]">
-                <div class="p-10 md:w-1/3 flex flex-col justify-center bg-white z-10 relative">
+            
+            <div class="bg-tomoGray rounded-3xl overflow-hidden border border-gray-100 flex flex-col md:flex-row h-[500px]">
+                <div class="p-10 md:w-1/3 flex flex-col justify-center bg-white z-10 relative shadow-lg">
                     <h3 class="text-2xl font-bold mb-4">Live Demo</h3>
                     <p class="text-gray-600 mb-8">
                         這是一個真實運行的 Web App。透過 AI 輔助，實現快速檢索與即時反饋。
@@ -156,61 +251,50 @@
                         System Online
                     </div>
                 </div>
-                <div class="md:w-2/3 bg-gray-100 relative flex items-center justify-center">
-                    <div class="text-center text-gray-400">
-                        <p class="text-lg font-medium">Interactive App Loading...</p>
-                        <p class="text-sm mt-2">Next Step: Integrate Vibe Code</p>
-                    </div>
+                <div class="md:w-2/3 bg-gray-50 relative flex items-center justify-center">
+                     <iframe src="checkin.html" class="w-full h-full border-0" title="Check-in System"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="data" class="py-24 bg-white overflow-hidden">
+    <section id="data" class="py-24 bg-tomoGray overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 relative h-96 bg-gray-50 rounded-3xl border border-gray-200 p-6 flex items-center justify-center">
-                    <div class="absolute w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center text-center text-xs font-bold text-tomoBlue top-10 left-10 float-bubble" style="animation-delay: 0s;">
+                <div class="order-2 md:order-1 relative h-96 bg-white rounded-3xl border border-gray-200 p-6 flex items-center justify-center shadow-sm">
+                    <div class="absolute w-32 h-32 bg-blue-50 rounded-full flex items-center justify-center text-center text-xs font-bold text-tomoBlue top-10 left-10 float-bubble" style="animation-delay: 0s;">
                         Inventory<br>Supply
                     </div>
                     <div class="absolute w-40 h-40 bg-white border-2 border-tomoBlue rounded-full flex items-center justify-center text-center text-sm font-bold text-gray-800 z-10 shadow-lg float-bubble" style="animation-delay: 1s;">
                         Sales /<br>Channel
                     </div>
-                    <div class="absolute w-28 h-28 bg-yellow-100 rounded-full flex items-center justify-center text-center text-xs font-bold text-gray-700 bottom-10 right-10 float-bubble" style="animation-delay: 2s;">
+                    <div class="absolute w-28 h-28 bg-yellow-50 rounded-full flex items-center justify-center text-center text-xs font-bold text-gray-700 bottom-10 right-10 float-bubble" style="animation-delay: 2s;">
                         Marketing<br>Growth
                     </div>
-                    <div class="absolute w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-center text-xs text-gray-600 top-20 right-12 opacity-80 float-bubble" style="animation-delay: 1.5s;">
-                        Operation
-                    </div>
-                    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20">
-                        <path d="M150 150 L250 250" stroke="black" stroke-width="2" />
-                        <path d="M200 200 L100 100" stroke="black" stroke-width="2" />
-                    </svg>
                 </div>
 
                 <div class="order-1 md:order-2">
                     <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">03. Data Insight</span>
-                    <h2 class="text-4xl font-bold mt-3 mb-6">EC Sales Flow Insight</h2>
+                    <h2 class="text-4xl font-bold mt-3 mb-6">EC 銷售數據洞察</h2>
                     <p class="text-gray-600 mb-8 leading-relaxed">
-                        將複雜的庫存、銷售與毛利數據視覺化。不只是看見數據，而是發現 <span class="bg-yellow-100 px-1 font-bold text-gray-900">YOY 成長 5-8%</span> 背後的關鍵驅動因子。
+                        將複雜的庫存、銷售與毛利數據視覺化。不只是看見數據，而是發現 <span class="bg-yellow-200 px-1 font-bold text-gray-900">YOY 成長 5-8%</span> 背後的關鍵驅動因子。
                     </p>
-                    
                     <div class="grid grid-cols-2 gap-y-6 gap-x-4">
                         <div class="flex flex-col">
                             <span class="text-3xl font-bold text-tomoBlue">5-8%</span>
-                            <span class="text-sm text-gray-500 border-t pt-1 mt-1">YOY Revenue Growth</span>
+                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">YOY 營收成長</span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-3xl font-bold text-gray-800">26%</span>
-                            <span class="text-sm text-gray-500 border-t pt-1 mt-1">客服回應率</span>
+                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">客服回應率</span>
                         </div>
                         <div class="flex flex-col">
                             <span class="text-3xl font-bold text-tomoYellow">10%</span>
-                            <span class="text-sm text-gray-500 border-t pt-1 mt-1">存貨掌握率</span>
+                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">存貨掌握率</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-green-500">7%</span>
-                            <span class="text-sm text-gray-500 border-t pt-1 mt-1">低退貨率</span>
+                            <span class="text-3xl font-bold text-green-600">7%</span>
+                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">低退貨率</span>
                         </div>
                     </div>
                 </div>
@@ -218,12 +302,12 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-16 text-center border-t border-gray-800" id="contact">
+    <footer class="bg-gray-900 text-white py-16 text-center border-t border-gray-800">
         <h2 class="text-3xl font-bold mb-8">Ready to create value?</h2>
         <a href="mailto:hungchungwm@gmail.com" class="inline-block px-8 py-4 bg-tomoBlue text-white rounded-full font-bold hover:bg-blue-600 transition text-lg shadow-lg hover:shadow-tomoBlue/50">
-            Start a Conversation
+            開始對話
         </a>
-        <p class="text-gray-500 mt-12 text-sm">© 2026 Rowan Huang. Built for Strategy & Innovation.</p>
+        <p class="text-gray-500 mt-12 text-sm">© 2026 Rowan Huang.</p>
     </footer>
 
 </body>
