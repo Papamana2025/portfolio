@@ -32,6 +32,11 @@
         
         .strategy-card { transition: all 0.3s ease; }
         .strategy-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+
+        /* 圖片懸停放大效果 */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom { transition: transform 0.5s ease; }
+        .group:hover .img-zoom { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans selection:bg-tomoYellow selection:text-tomoBlue">
@@ -53,24 +58,21 @@
         </div>
     </nav>
 
-    <header class="h-screen min-h-[600px] flex flex-col justify-center items-center text-center px-4 relative overflow-hidden bg-tomoGray/30">
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-tomoBlue via-tomoYellow to-tomoBlue"></div>
-        <div class="absolute -top-20 -right-20 w-96 h-96 bg-tomoYellow/10 rounded-full blur-3xl"></div>
-        
-        <div class="relative z-10 w-full max-w-7xl mx-auto mt-10 flex flex-col items-center">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-6 fade-up text-center whitespace-nowrap">
+    <header class="pt-32 pb-20 bg-tomoGray text-center px-4">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
                 Bridging Data & Real-World Application
             </h1>
-            <h2 class="text-2xl md:text-4xl font-black text-darkBlue mb-8 fade-up delay-100 leading-normal text-center">
-                不只是策略規劃，<br>更具備落地執行的技術力。
+            <h2 class="text-2xl md:text-3xl font-black text-darkBlue mb-8">
+                不只是策略規劃，更具備落地執行的技術力。
             </h2>
-            <div class="max-w-3xl mx-auto mb-10 fade-up delay-200">
-                <p class="text-lg md:text-xl font-bold text-gray-600 leading-relaxed border-l-4 border-tomoYellow pl-6 text-left bg-white/50 py-4 rounded-r-lg shadow-sm">
+            <div class="max-w-3xl mx-auto mb-10">
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed border-l-4 border-tomoYellow pl-6 text-left bg-white/50 py-4 rounded-r-lg shadow-sm">
                     以營運策略與系統整合為核心，結合商控與數據分析。<br>
                     <span class="text-tomoBlue">專注於市場營運流程優化與銷售結構管理，推動效率與績效雙成長。</span>
                 </p>
             </div>
-            <div class="flex flex-col items-center fade-up delay-300 gap-3">
+            <div class="flex flex-col items-center gap-3">
                 <a href="#portfolio" class="px-8 py-3 bg-tomoBlue text-white font-bold rounded-lg hover:bg-blue-800 transition shadow-lg hover:shadow-tomoBlue/30">
                     查看精選案例
                 </a>
@@ -83,7 +85,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">MY PHILOSOPHY</span>
-                <h2 class="text-3xl md:text-4xl font-bold mt-2 text-gray-900">縱向深耕策略，橫向整合價值</h2>
+                <h2 class="text-3xl font-bold mt-2 text-gray-900">縱向深耕策略，橫向整合價值</h2>
                 <div class="w-16 h-1 bg-tomoYellow mx-auto mt-4 rounded-full"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
@@ -92,7 +94,7 @@
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Integration</h3>
                     <div class="mb-6">
                         <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
-                        <p class="text-gray-700 font-medium leading-relaxed">單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，消除內耗。</p>
+                        <p class="text-gray-700 text-base leading-relaxed">單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，消除內耗。</p>
                     </div>
                     <div class="w-full h-px bg-gray-200 mb-6"></div>
                     <div>
@@ -105,7 +107,7 @@
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Product</h3>
                     <div class="mb-6">
                         <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
-                        <p class="text-gray-700 font-medium leading-relaxed">產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。</p>
+                        <p class="text-gray-700 text-base leading-relaxed">產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。</p>
                     </div>
                     <div class="w-full h-px bg-gray-200 mb-6"></div>
                     <div>
@@ -118,7 +120,7 @@
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Data</h3>
                     <div class="mb-6">
                         <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
-                        <p class="text-gray-700 font-medium leading-relaxed">直覺會有偏差，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。</p>
+                        <p class="text-gray-700 text-base leading-relaxed">直覺會有偏差，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。</p>
                     </div>
                     <div class="w-full h-px bg-gray-200 mb-6"></div>
                     <div>
@@ -141,9 +143,9 @@
                 
                 <a href="project1.html" class="block group">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 h-full flex flex-col">
-                        <div class="h-48 bg-blue-50 flex items-center justify-center relative overflow-hidden">
-                            <div class="absolute inset-0 bg-tomoBlue/10 group-hover:bg-tomoBlue/20 transition"></div>
-                            <span class="text-5xl">📑</span>
+                        <div class="h-48 bg-gray-200 img-zoom-container relative">
+                            <img src="strategy.jpg" alt="Strategy & Operations" class="w-full h-full object-cover img-zoom" onerror="this.src='https://via.placeholder.com/400x300?text=Upload+strategy.jpg'">
+                            <div class="absolute inset-0 bg-tomoBlue/10 group-hover:bg-tomoBlue/0 transition"></div>
                         </div>
                         <div class="p-8 flex-1">
                             <span class="text-xs font-bold text-tomoBlue bg-blue-50 px-2 py-1 rounded mb-3 inline-block">STRATEGY & OPERATIONS</span>
@@ -160,8 +162,8 @@
 
                 <a href="checkin.html" class="block group">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 h-full flex flex-col">
-                        <div class="h-48 bg-gray-800 flex items-center justify-center relative">
-                            <span class="text-5xl">⚡</span>
+                        <div class="h-48 bg-gray-200 img-zoom-container relative">
+                            <img src="coding.jpg" alt="AI Development" class="w-full h-full object-cover img-zoom" onerror="this.src='https://via.placeholder.com/400x300?text=Upload+coding.jpg'">
                         </div>
                         <div class="p-8 flex-1">
                             <span class="text-xs font-bold text-tomoYellow bg-yellow-50 px-2 py-1 rounded mb-3 inline-block">AI DEVELOPMENT</span>
@@ -176,14 +178,14 @@
                     </div>
                 </a>
 
-                <div class="block group opacity-75 cursor-not-allowed">
+                <div class="block group opacity-80 hover:opacity-100 transition cursor-not-allowed">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-sm h-full flex flex-col border border-gray-200">
-                        <div class="h-48 bg-gray-50 flex items-center justify-center">
-                            <span class="text-5xl grayscale">📊</span>
+                        <div class="h-48 bg-gray-200 img-zoom-container relative">
+                            <img src="data.jpg" alt="Data Visualization" class="w-full h-full object-cover img-zoom grayscale group-hover:grayscale-0 transition duration-500" onerror="this.src='https://via.placeholder.com/400x300?text=Upload+data.jpg'">
                         </div>
                         <div class="p-8 flex-1">
                             <span class="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded mb-3 inline-block">DATA VISUALIZATION</span>
-                            <h3 class="text-2xl font-bold mb-3 text-gray-500">互動式儀表板 (Coming Soon)</h3>
+                            <h3 class="text-2xl font-bold mb-3 text-gray-600">互動式儀表板 (Coming Soon)</h3>
                             <p class="text-gray-400 text-sm">
                                 將數據轉化為決策引擎。目前正在整合中。
                             </p>
