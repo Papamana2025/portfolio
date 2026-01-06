@@ -30,12 +30,18 @@
             100% { transform: translateY(-50%); }
         }
         
-        /* 圖片容器與輪播效果 */
+        /* 通用輪播樣式 */
         .img-container { position: relative; overflow: hidden; }
         .slider-nav { transition: all 0.3s ease; opacity: 0; }
-        .img-container:hover .slider-nav { opacity: 1; }
+        /* 滑鼠移入時顯示箭頭 */
+        .group:hover .slider-nav { opacity: 1; } 
+        
         .slide-fade { animation: fadeEffect 0.5s; }
-        @keyframes fadeEffect { from {opacity: 0.8;} to {opacity: 1;} }
+        @keyframes fadeEffect { from {opacity: 0.5;} to {opacity: 1;} }
+
+        /* 強制隱藏與顯示的工具類 */
+        .slide-hidden { display: none; }
+        .slide-active { display: block; animation: fadeEffect 0.5s; }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans selection:bg-tomoYellow selection:text-tomoBlue">
@@ -45,17 +51,19 @@
             <a href="index.html" class="flex items-center text-tomoBlue font-bold hover:text-darkBlue transition">
                 <span class="mr-2">←</span> 返回首頁
             </a>
-            <div class="text-sm font-bold text-gray-400">PROJECT 01</div>
+            <div class="text-sm font-bold text-gray-400 tracking-widest">PORTFOLIO</div>
         </div>
     </nav>
 
-    <header class="pt-32 pb-20 bg-tomoGray text-center px-4">
-        <div class="max-w-4xl mx-auto">
-            <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase mb-4 block">STRATEGY & OPERATIONS</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-                全通路市場營運流程再造<br>與產品銷售結構優化
+    <header class="pt-32 pb-20 bg-tomoGray text-center px-4 overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full">
+            <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase mb-6 block">STRATEGY & OPERATIONS</span>
+            
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 leading-tight md:whitespace-nowrap">
+                全通路市場營運流程再造與產品銷售結構優化
             </h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            
+            <p class="text-lg md:text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
                 整合 BPR 流程重塑、自動化技術與銷售引導設計，解決數據斷鏈，實現品牌與營收的雙向增長。
             </p>
         </div>
@@ -93,52 +101,54 @@
                     </div>
                 </div>
                 
-                <div class="relative bg-gray-900 p-0 rounded-3xl shadow-xl border border-gray-700 overflow-hidden h-[500px]">
-                    <div class="bg-gray-800 px-4 py-3 flex items-center space-x-2 z-10 relative border-b border-gray-700">
-                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                        <span class="ml-4 text-xs text-gray-400 font-mono">ProcessData.vba — Running...</span>
-                    </div>
+                <div class="relative group h-[500px]">
                     
-                    <div class="p-6 font-mono text-sm leading-relaxed relative h-full">
-                        <div class="code-scroll text-gray-300">
-                            <span class="text-purple-400">Sub</span> <span class="text-blue-400">AutoProcess_ERP_Data</span>()<br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' --------------------------------</span><br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' STEP 1: Initialize System</span><br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' --------------------------------</span><br>
-                            &nbsp;&nbsp;<span class="text-purple-400">Dim</span> ws <span class="text-purple-400">As</span> Worksheet<br>
-                            &nbsp;&nbsp;<span class="text-purple-400">Dim</span> lastRow <span class="text-purple-400">As</span> Long<br>
-                            &nbsp;&nbsp;<span class="text-purple-400">Set</span> ws = ThisWorkbook.Sheets(<span class="text-green-400">"RawData"</span>)<br>
-                            <br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' 自動偵測最後一行數據</span><br>
-                            &nbsp;&nbsp;lastRow = ws.Cells(ws.Rows.Count, <span class="text-green-400">"A"</span>).End(xlUp).Row<br>
-                            &nbsp;&nbsp;Debug.Print <span class="text-green-400">"Found "</span> & lastRow & <span class="text-green-400">" records."</span><br>
-                            <br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' --------------------------------</span><br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' STEP 2: Data Cleaning Loop</span><br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' --------------------------------</span><br>
-                            &nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"F2:F"</span> & lastRow)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsDate(cell.Value) <span class="text-purple-400">Then</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">' 格式標準化 yyyymmdd</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Value = Format(cell.Value, <span class="text-green-400">"yyyymmdd"</span>)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">' 合併主單號與收件人資訊</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;cell.Offset(0, 2).Value = CleanString(cell.Value)<br>
-                            &nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
-                            <br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' --------------------------------</span><br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' STEP 3: Export to ERP Format</span><br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' --------------------------------</span><br>
-                            &nbsp;&nbsp;ws.Columns(<span class="text-green-400">"A:B"</span>).Insert Shift:=xlToRight<br>
-                            &nbsp;&nbsp;MsgBox <span class="text-green-400">"Process Complete. Ready for Upload."</span><br>
-                            <span class="text-purple-400">End Sub</span><br>
-                            <br>
-                            <span class="text-purple-400">Sub</span> <span class="text-blue-400">AutoProcess_ERP_Data</span>()<br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' System Ready...</span><br>
-                            &nbsp;&nbsp;<span class="text-purple-400">Dim</span> ws <span class="text-purple-400">As</span> Worksheet<br>
-                            &nbsp;&nbsp;<span class="text-gray-500">' ...restarting sequence</span><br>
+                    <div id="bpr-slide-1" class="slide-active h-full w-full bg-gray-900 rounded-3xl shadow-xl border border-gray-700 overflow-hidden relative">
+                        <div class="bg-gray-800 px-4 py-3 flex items-center space-x-2 z-10 relative border-b border-gray-700">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="ml-4 text-xs text-gray-400 font-mono">ProcessData.vba — Running...</span>
                         </div>
+                        <div class="p-6 font-mono text-sm leading-relaxed relative h-full">
+                            <div class="code-scroll text-gray-300">
+                                <span class="text-purple-400">Sub</span> <span class="text-blue-400">AutoProcess_ERP_Data</span>()<br>
+                                &nbsp;&nbsp;<span class="text-gray-500">' STEP 1: Initialize System</span><br>
+                                &nbsp;&nbsp;<span class="text-purple-400">Dim</span> ws <span class="text-purple-400">As</span> Worksheet<br>
+                                &nbsp;&nbsp;<span class="text-purple-400">Set</span> ws = ThisWorkbook.Sheets(<span class="text-green-400">"RawData"</span>)<br>
+                                &nbsp;&nbsp;<span class="text-purple-400">Dim</span> lastRow <span class="text-purple-400">As</span> Long<br>
+                                <br>
+                                &nbsp;&nbsp;<span class="text-gray-500">' STEP 2: Data Cleaning Loop</span><br>
+                                &nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"F2:F"</span>)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsDate(cell.Value) <span class="text-purple-400">Then</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Value = Format(cell.Value, <span class="text-green-400">"yyyymmdd"</span>)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+                                &nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
+                                <br>
+                                &nbsp;&nbsp;<span class="text-gray-500">' STEP 3: Cross-Dept Integration</span><br>
+                                &nbsp;&nbsp;ws.Columns(<span class="text-green-400">"A:B"</span>).Insert Shift:=xlToRight<br>
+                                &nbsp;&nbsp;MsgBox <span class="text-green-400">"Workflow Complete."</span><br>
+                                <span class="text-purple-400">End Sub</span><br>
+                                <br>
+                                <span class="text-purple-400">Sub</span> <span class="text-blue-400">AutoProcess_ERP_Data</span>()<br>
+                                &nbsp;&nbsp;<span class="text-gray-500">' Restarting...</span><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bpr-slide-2" class="slide-hidden h-full w-full bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden flex items-center justify-center relative">
+                        <img src="bpr-flowchart.jpg" alt="Cross Department Flowchart" class="w-full h-full object-contain p-4" onerror="this.parentNode.innerHTML='<div class=\'text-center text-gray-400\'>請上傳 bpr-flowchart.jpg</div>'">
+                        <div class="absolute bottom-4 left-0 w-full text-center">
+                            <span class="bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-70">Cross-Department Workflow</span>
+                        </div>
+                    </div>
+
+                    <button onclick="toggleBPR()" class="absolute left-[-20px] top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 p-3 rounded-full shadow-lg text-tomoBlue slider-nav z-20">❮</button>
+                    <button onclick="toggleBPR()" class="absolute right-[-20px] top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 p-3 rounded-full shadow-lg text-tomoBlue slider-nav z-20">❯</button>
+                    
+                    <div class="absolute -bottom-8 w-full flex justify-center space-x-2">
+                        <span id="bpr-dot-1" class="w-2 h-2 rounded-full bg-tomoBlue cursor-pointer" onclick="setBPR(1)"></span>
+                        <span id="bpr-dot-2" class="w-2 h-2 rounded-full bg-gray-300 hover:bg-tomoBlue cursor-pointer" onclick="setBPR(2)"></span>
                     </div>
                 </div>
             </div>
@@ -184,21 +194,21 @@
                 </div>
 
                 <div class="order-1 md:order-2">
-                    <div class="relative bg-white p-2 rounded-2xl shadow-xl border border-gray-200 group">
-                        <div class="img-container rounded-xl overflow-hidden min-h-[400px] flex items-center justify-center bg-gray-50 relative">
-                             <img id="sliderImage" src="product-strategy.jpg" alt="Product Strategy" class="w-full h-auto object-cover slide-fade" onerror="this.src='https://via.placeholder.com/600x400?text=Wait+for+Upload'">
+                    <div class="relative bg-white p-2 rounded-2xl shadow-xl border border-gray-200 group h-[400px]">
+                        
+                        <div class="img-container rounded-xl overflow-hidden h-full w-full flex items-center justify-center bg-gray-50 relative">
+                             <img id="productImage" src="product-strategy.jpg" alt="Product Strategy" class="w-full h-full object-cover slide-fade" onerror="this.src='https://via.placeholder.com/600x400?text=Upload+product-planning.jpg'">
                              
-                             <button onclick="switchSlide(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-tomoBlue slider-nav">❮</button>
-                             <button onclick="switchSlide(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-tomoBlue slider-nav">❯</button>
+                             <button onclick="switchProductSlide(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-tomoBlue slider-nav">❮</button>
+                             <button onclick="switchProductSlide(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md text-tomoBlue slider-nav">❯</button>
                         </div>
                         
-                        <div class="flex justify-center mt-4 space-x-2">
-                            <span class="w-2 h-2 rounded-full bg-tomoBlue cursor-pointer" onclick="currentSlide(1)"></span>
-                            <span class="w-2 h-2 rounded-full bg-gray-300 hover:bg-tomoBlue cursor-pointer" onclick="currentSlide(2)"></span>
+                        <div class="absolute -bottom-8 w-full flex justify-center space-x-2">
+                            <span id="prod-dot-1" class="w-2 h-2 rounded-full bg-tomoBlue cursor-pointer" onclick="setProductSlide(1)"></span>
+                            <span id="prod-dot-2" class="w-2 h-2 rounded-full bg-gray-300 hover:bg-tomoBlue cursor-pointer" onclick="setProductSlide(2)"></span>
                         </div>
-                        
-                        <p class="text-center text-xs text-gray-400 mt-3">Click arrows to view Planning vs. Result</p>
                     </div>
+                    <p class="text-center text-xs text-gray-400 mt-10">Click arrows to view Planning vs. Result</p>
                 </div>
             </div>
         </div>
@@ -213,32 +223,71 @@
     </footer>
 
     <script>
-        // 設定圖片清單
-        const images = [
-            "product-strategy.jpg",  // 第一張：你已經上傳的圖
-            "product-planning.jpg"   // 第二張：等待你上傳的規劃圖/Banner
+        // === 01. BPR Slider (Code vs Image) ===
+        let bprState = 1; // 1=Code, 2=Image
+        
+        function toggleBPR() {
+            bprState = (bprState === 1) ? 2 : 1;
+            updateBPRUI();
+        }
+        function setBPR(n) {
+            bprState = n;
+            updateBPRUI();
+        }
+        function updateBPRUI() {
+            const slide1 = document.getElementById('bpr-slide-1');
+            const slide2 = document.getElementById('bpr-slide-2');
+            const dot1 = document.getElementById('bpr-dot-1');
+            const dot2 = document.getElementById('bpr-dot-2');
+
+            if (bprState === 1) {
+                slide1.classList.remove('slide-hidden'); slide1.classList.add('slide-active');
+                slide2.classList.remove('slide-active'); slide2.classList.add('slide-hidden');
+                dot1.className = "w-2 h-2 rounded-full bg-tomoBlue cursor-pointer";
+                dot2.className = "w-2 h-2 rounded-full bg-gray-300 hover:bg-tomoBlue cursor-pointer";
+            } else {
+                slide1.classList.remove('slide-active'); slide1.classList.add('slide-hidden');
+                slide2.classList.remove('slide-hidden'); slide2.classList.add('slide-active');
+                dot1.className = "w-2 h-2 rounded-full bg-gray-300 hover:bg-tomoBlue cursor-pointer";
+                dot2.className = "w-2 h-2 rounded-full bg-tomoBlue cursor-pointer";
+            }
+        }
+
+        // === 02. Product Slider (Image vs Image) ===
+        const productImages = [
+            "product-strategy.jpg",  // 既有圖片 (成果)
+            "product-planning.jpg"   // 待上傳圖片 (企劃/Banner)
         ];
-        let currentIndex = 0;
+        let prodIndex = 0;
 
-        function switchSlide(n) {
-            currentIndex += n;
-            if (currentIndex >= images.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = images.length - 1;
-            updateImage();
+        function switchProductSlide(n) {
+            prodIndex += n;
+            if (prodIndex >= productImages.length) prodIndex = 0;
+            if (prodIndex < 0) prodIndex = productImages.length - 1;
+            updateProductUI();
         }
-
-        function currentSlide(n) {
-            currentIndex = n - 1;
-            updateImage();
+        function setProductSlide(n) {
+            prodIndex = n - 1;
+            updateProductUI();
         }
+        function updateProductUI() {
+            const img = document.getElementById("productImage");
+            const dot1 = document.getElementById('prod-dot-1');
+            const dot2 = document.getElementById('prod-dot-2');
 
-        function updateImage() {
-            const imgElement = document.getElementById("sliderImage");
-            imgElement.style.opacity = '0.5'; // 簡單的淡出效果
+            img.style.opacity = '0.5';
             setTimeout(() => {
-                imgElement.src = images[currentIndex];
-                imgElement.style.opacity = '1';
+                img.src = productImages[prodIndex];
+                img.style.opacity = '1';
             }, 100);
+
+            if (prodIndex === 0) {
+                dot1.className = "w-2 h-2 rounded-full bg-tomoBlue cursor-pointer";
+                dot2.className = "w-2 h-2 rounded-full bg-gray-300 hover:bg-tomoBlue cursor-pointer";
+            } else {
+                dot1.className = "w-2 h-2 rounded-full bg-gray-300 hover:bg-tomoBlue cursor-pointer";
+                dot2.className = "w-2 h-2 rounded-full bg-tomoBlue cursor-pointer";
+            }
         }
     </script>
 
