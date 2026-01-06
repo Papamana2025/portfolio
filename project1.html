@@ -30,12 +30,15 @@
         .fade-enter { animation: fadeEffect 0.5s; }
         @keyframes fadeEffect { from {opacity: 0.5;} to {opacity: 1;} }
 
-        /* VBA 滾動動畫 (因代碼較長，時間設為 40s) */
-        .code-scroll { animation: scrollUp 40s linear infinite; }
-        /* 滑鼠移上去暫停滾動，方便閱讀 */
+        /* VBA 滾動動畫 - 調整為 50s 以適應長代碼的閱讀速度 */
+        .code-scroll { animation: scrollUp 50s linear infinite; }
+        /* 滑鼠移上去暫停滾動 */
         .code-scroll:hover { animation-play-state: paused; }
         
-        @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        @keyframes scrollUp { 
+            0% { transform: translateY(0); } 
+            100% { transform: translateY(-50%); } /* 向上捲動總高度的一半(即一組代碼的高度)，實現無縫循環 */
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans selection:bg-tomoYellow selection:text-tomoBlue">
@@ -101,64 +104,130 @@
                 <div class="relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden h-[600px] hover-trigger group">
                     
                     <div id="bpr-slide-1" class="absolute inset-0 w-full h-full bg-gray-900 transition-opacity duration-500 z-10">
-                        <div class="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700">
+                        <div class="bg-gray-800 px-4 py-3 flex items-center justify-between border-b border-gray-700 z-20 relative">
                             <div class="flex space-x-2">
                                 <div class="w-3 h-3 bg-red-500 rounded-full"></div>
                                 <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
                                 <div class="w-3 h-3 bg-green-500 rounded-full"></div>
                             </div>
-                            <span class="text-xs text-gray-400 font-mono">ProcessData.vba (Semi-Auto Logic)</span>
+                            <span class="text-xs text-gray-400 font-mono">ProcessData.vba (Live Code)</span>
                         </div>
+                        
                         <div class="p-6 font-mono text-xs md:text-sm leading-relaxed relative h-full overflow-hidden">
                             <div class="code-scroll text-gray-300">
-                                <span class="text-purple-400">Sub</span> <span class="text-blue-400">ProcessData</span>()<br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Dim</span> ws <span class="text-purple-400">As</span> Worksheet<br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Dim</span> lastRow <span class="text-purple-400">As</span> Long<br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Dim</span> dateValue <span class="text-purple-400">As</span> String<br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Dim</span> orderDict <span class="text-purple-400">As</span> Collection<br>
-                                <br>
-                                &nbsp;&nbsp;<span class="text-gray-500">' 設定工作表，這裡假設是第一個工作表</span><br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Set</span> ws = ThisWorkbook.Sheets(1)<br>
-                                &nbsp;&nbsp;<span class="text-gray-500">' 找到最後一行</span><br>
-                                &nbsp;&nbsp;lastRow = ws.Cells(ws.Rows.Count, <span class="text-green-400">"F"</span>).End(xlUp).Row<br>
-                                <br>
-                                &nbsp;&nbsp;<span class="text-gray-500">' 插入兩列並添加抬頭</span><br>
-                                &nbsp;&nbsp;ws.Columns(<span class="text-green-400">"A:B"</span>).Insert Shift:=xlToRight<br>
-                                &nbsp;&nbsp;ws.Cells(1, 1).Value = <span class="text-green-400">"主單號與收件人合併"</span><br>
-                                <br>
-                                &nbsp;&nbsp;<span class="text-gray-500">' 格式轉換 yyyymmdd</span><br>
-                                &nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"F2:F"</span> & lastRow)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsDate(cell.Value) <span class="text-purple-400">Then</span><br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dateValue = Format(cell.Value, <span class="text-green-400">"yyyymmdd"</span>)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Value = dateValue<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
-                                <br>
-                                &nbsp;&nbsp;<span class="text-gray-500">' 銷售金額計算邏輯</span><br>
-                                &nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"AC2:AC"</span> & lastRow)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsNumeric(cell.Value) <span class="text-purple-400">Then</span><br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salesAmount = cell.Value<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity = cell.Offset(0, -10).Value<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> quantity <> 0 <span class="text-purple-400">Then</span><br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Offset(0, 1).Value = salesAmount / quantity<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
-                                <br>
-                                &nbsp;&nbsp;ws.Columns(<span class="text-green-400">"AC:AD"</span>).AutoFit<br>
-                                <span class="text-purple-400">End Sub</span><br>
-                                <br>
-                                <span class="text-gray-500">' --- Loop for Seamless Scroll ---</span><br>
-                                <span class="text-purple-400">Sub</span> <span class="text-blue-400">ProcessData</span>()<br>
-                                &nbsp;&nbsp;<span class="text-gray-500">' System Loading...</span><br>
-                                &nbsp;&nbsp;<span class="text-purple-400">Dim</span> ws <span class="text-purple-400">As</span> Worksheet<br>
+                                
+                                <div class="mb-10">
+<span class="text-purple-400">Sub</span> <span class="text-blue-400">ProcessData</span>()<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> ws <span class="text-purple-400">As</span> Worksheet<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> lastRow <span class="text-purple-400">As</span> Long<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> cell <span class="text-purple-400">As</span> Range<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> dateValue <span class="text-purple-400">As</span> String<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 設定工作表</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Set</span> ws = ThisWorkbook.Sheets(1)<br>
+&nbsp;&nbsp;lastRow = ws.Cells(ws.Rows.Count, <span class="text-green-400">"F"</span>).End(xlUp).Row<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 格式清洗：轉換日期格式</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"F2:F"</span> & lastRow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsDate(cell.Value) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dateValue = Format(cell.Value, <span class="text-green-400">"yyyymmdd"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Value = dateValue<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 數據標準化：移除特殊符號</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> col <span class="text-purple-400">In</span> ws.UsedRange<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> <span class="text-purple-400">Not</span> IsEmpty(col.Value) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col.Value = Replace(col.Value, <span class="text-green-400">"'"</span>, <span class="text-green-400">""</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> col<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 邏輯運算：建立訂單序號字典</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Set</span> orderDict = <span class="text-purple-400">New</span> Collection<br>
+&nbsp;&nbsp;<span class="text-purple-400">On Error Resume Next</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"D2:D"</span> & lastRow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;orderID = cell.Value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsEmpty(orderDict(orderID)) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderCounter = orderCounter + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderDict.Add orderCounter, orderID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cell.Offset(0, -2).Value = orderDict(orderID)<br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 商業邏輯：計算折扣後單價</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"AC2:AC"</span> & lastRow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsNumeric(cell.Value) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salesAmount = cell.Value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity = cell.Offset(0, -10).Value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> quantity <> 0 <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Offset(0, 1).Value = salesAmount / quantity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
+<br>
+&nbsp;&nbsp;ws.Columns(<span class="text-green-400">"AC:AD"</span>).AutoFit<br>
+<span class="text-purple-400">End Sub</span>
+                                </div>
+
+                                <div class="mb-10">
+<span class="text-purple-400">Sub</span> <span class="text-blue-400">ProcessData</span>()<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> ws <span class="text-purple-400">As</span> Worksheet<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> lastRow <span class="text-purple-400">As</span> Long<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> cell <span class="text-purple-400">As</span> Range<br>
+&nbsp;&nbsp;<span class="text-purple-400">Dim</span> dateValue <span class="text-purple-400">As</span> String<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 設定工作表</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Set</span> ws = ThisWorkbook.Sheets(1)<br>
+&nbsp;&nbsp;lastRow = ws.Cells(ws.Rows.Count, <span class="text-green-400">"F"</span>).End(xlUp).Row<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 格式清洗：轉換日期格式</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"F2:F"</span> & lastRow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsDate(cell.Value) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dateValue = Format(cell.Value, <span class="text-green-400">"yyyymmdd"</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Value = dateValue<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 數據標準化：移除特殊符號</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> col <span class="text-purple-400">In</span> ws.UsedRange<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> <span class="text-purple-400">Not</span> IsEmpty(col.Value) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col.Value = Replace(col.Value, <span class="text-green-400">"'"</span>, <span class="text-green-400">""</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> col<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 邏輯運算：建立訂單序號字典</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Set</span> orderDict = <span class="text-purple-400">New</span> Collection<br>
+&nbsp;&nbsp;<span class="text-purple-400">On Error Resume Next</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"D2:D"</span> & lastRow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;orderID = cell.Value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsEmpty(orderDict(orderID)) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderCounter = orderCounter + 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderDict.Add orderCounter, orderID<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cell.Offset(0, -2).Value = orderDict(orderID)<br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
+<br>
+&nbsp;&nbsp;<span class="text-gray-500">' 商業邏輯：計算折扣後單價</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">For Each</span> cell <span class="text-purple-400">In</span> ws.Range(<span class="text-green-400">"AC2:AC"</span> & lastRow)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> IsNumeric(cell.Value) <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salesAmount = cell.Value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity = cell.Offset(0, -10).Value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">If</span> quantity <> 0 <span class="text-purple-400">Then</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cell.Offset(0, 1).Value = salesAmount / quantity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">End If</span><br>
+&nbsp;&nbsp;<span class="text-purple-400">Next</span> cell<br>
+<br>
+&nbsp;&nbsp;ws.Columns(<span class="text-green-400">"AC:AD"</span>).AutoFit<br>
+<span class="text-purple-400">End Sub</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div id="bpr-slide-2" class="absolute inset-0 w-full h-full bg-gray-50 opacity-0 transition-opacity duration-500 pointer-events-none p-0 overflow-hidden">
                         <div class="h-full w-full overflow-y-auto p-4 custom-scrollbar">
-                             <img src="erp-flowchart.jpg" alt="ERP Flowchart" class="w-full h-auto object-contain" onerror="this.parentNode.innerHTML='<div class=\'h-full flex flex-col justify-center items-center text-center\'><p class=\'text-gray-500 font-bold\'>等待圖片上傳</p><p class=\'text-sm text-gray-400 mt-2\'>請將 image.jpg 改名為 <b>erp-flowchart.jpg</b><br>並上傳至 GitHub</p></div>'">
+                             <img src="erp-flowchart.jpg" alt="ERP Flowchart" class="w-full h-auto object-contain" onerror="this.parentNode.innerHTML='<div class=\'h-full flex flex-col justify-center items-center text-center\'><p class=\'text-gray-500 font-bold\'>等待圖片上傳</p><p class=\'text-sm text-gray-400 mt-2\'>請確保 <b>erp-flowchart.jpg</b><br>已上傳至 GitHub</p></div>'">
                         </div>
                     </div>
 
@@ -216,11 +285,13 @@
                 </div>
 
                 <div class="order-1 md:order-2">
-                    <div class="bg-white p-3 rounded-2xl border border-gray-200 shadow-xl rotate-1 hover:rotate-0 transition duration-500">
+                    <div class="relative bg-white p-2 rounded-2xl shadow-xl border border-gray-200 hover-trigger group">
                         <div class="img-container rounded-xl overflow-hidden min-h-[400px] flex items-center justify-center bg-gray-50 relative">
-                             <img src="product-strategy.jpg" alt="Strategy" class="w-full h-auto object-cover">
+                             <img id="product-img" src="product-strategy.jpg" alt="Strategy" class="w-full h-auto object-cover fade-enter">
+                             <button onclick="switchProductSlide(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-md text-tomoBlue slider-nav">❮</button>
+                             <button onclick="switchProductSlide(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-md text-tomoBlue slider-nav">❯</button>
                         </div>
-                        <p class="text-center text-xs text-gray-400 mt-3">Visual Strategy Case Study</p>
+                        <p class="text-center text-xs text-gray-400 mt-3" id="product-caption">Visual Strategy Case Study</p>
                     </div>
                 </div>
             </div>
@@ -256,6 +327,26 @@
                 dot2.classList.replace('bg-gray-300', 'bg-tomoBlue');
                 dot1.classList.replace('bg-tomoBlue', 'bg-gray-300');
             }
+        }
+
+        // Product Slider
+        const productImages = [
+            { src: "product-strategy.jpg", caption: "Product Strategy & Planning" },
+            { src: "bpr-flow.jpg", caption: "Process Optimization Flow" }
+        ];
+        let pIndex = 0;
+        function switchProductSlide(n) {
+            pIndex += n;
+            if (pIndex >= productImages.length) pIndex = 0;
+            if (pIndex < 0) pIndex = productImages.length - 1;
+            const img = document.getElementById('product-img');
+            const cap = document.getElementById('product-caption');
+            img.style.opacity = '0.5';
+            setTimeout(() => {
+                img.src = productImages[pIndex].src;
+                cap.innerText = productImages[pIndex].caption;
+                img.style.opacity = '1';
+            }, 200);
         }
     </script>
 </body>
