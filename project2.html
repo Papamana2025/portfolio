@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>課程報到與學員管理系統 | 作品詳情</title>
+    <title>課程報到與學員管理系統 | Portfolio</title>
     <style>
         :root {
             --primary-color: #2563eb;
             --text-color: #333;
             --light-grey: #f8f9fa;
             --white: #ffffff;
+            --dark-bg: #1f2937; /* 深色背景 */
             --border-color: #e5e7eb;
         }
 
@@ -22,39 +23,50 @@
             background-color: var(--white);
         }
 
-        /* 全寬度區塊設定 */
+        /* 全寬度區塊 */
         .section-full {
             width: 100%;
-            padding: 60px 0; /* 預設上下間距 */
+            padding: 60px 0;
         }
 
         .bg-white { background-color: var(--white); }
         .bg-grey { background-color: var(--light-grey); }
+        .bg-dark { background-color: var(--dark-bg); color: var(--white); }
 
-        /* 內容容器 (限制寬度並置中) */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* 導覽列 */
+        /* 導覽列 (左右佈局) */
         .nav-header {
-            padding: 20px 0;
+            padding: 20px 0 40px 0; /* 增加下方間距 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee; /* 增加分隔線 */
+            margin-bottom: 40px;
         }
 
         .back-link {
             text-decoration: none;
             color: #666;
-            display: inline-flex;
-            align-items: center;
             font-weight: 500;
             font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
             transition: color 0.2s;
         }
 
         .back-link:hover { color: var(--primary-color); }
         .back-link::before { content: '←'; margin-right: 8px; }
+
+        .nav-project-name {
+            color: #999;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
         /* 標題區 */
         header {
@@ -62,9 +74,24 @@
             margin-bottom: 40px;
         }
 
+        /* 新增：AI Development 標籤 */
+        .tag-ai { 
+            background-color: #fef9c3; 
+            color: #ca8a04; 
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 15px;
+            margin-top: 0;
             color: #111;
         }
 
@@ -74,16 +101,15 @@
             font-weight: 400;
         }
 
-        /* 影片展示區 (重點優化) */
+        /* 影片展示區 */
         .video-wrapper {
             width: 100%;
-            max-width: 1000px; /* 讓影片比文字區寬一點，更有張力 */
+            max-width: 1000px;
             margin: 0 auto;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             background-color: #000;
-            /* 強制 16:9 比例，解決變成細長條的問題 */
             aspect-ratio: 16 / 9; 
             position: relative;
         }
@@ -91,18 +117,20 @@
         video {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 確保影片內容完整顯示 */
             display: block;
         }
 
         /* 內容標題樣式 */
         h2 {
             font-size: 1.8rem;
-            color: #111;
             margin-top: 0;
             margin-bottom: 30px;
-            text-align: center; /* 標題置中 */
+            text-align: center;
         }
+        
+        /* 深色區塊的 H2 需要變色 */
+        .bg-dark h2 { color: var(--white); }
+        .bg-white h2, .bg-grey h2 { color: #111; }
 
         h3 {
             font-size: 1.3rem;
@@ -114,16 +142,14 @@
         p, li { font-size: 1.05rem; margin-bottom: 15px; }
         ul { padding-left: 20px; }
 
-        /* 技術堆疊與隱私 (緊湊版) */
-        .compact-section {
-            padding: 40px 0; /* 縮小上下間距 */
-        }
+        /* 技術堆疊 */
+        .compact-section { padding: 40px 0; }
 
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content: center; /* 標籤置中 */
+            justify-content: center;
             margin-bottom: 30px;
         }
 
@@ -148,38 +174,38 @@
             text-align: center;
         }
 
-        /* 頁尾 CTA 區塊 (保持一致性) */
+        /* 頁尾 CTA (深色風格) */
         .cta-section {
             text-align: center;
             padding: 80px 20px;
-            background-color: var(--white);
-            border-top: 1px solid #eee;
+            border-top: none; /* 移除邊線，因為背景已不同 */
         }
+
+        .cta-section h2 { margin-bottom: 10px; }
+        .cta-section p { color: #ccc; margin-bottom: 30px; }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--white); /* 按鈕改白色 */
+            color: var(--dark-bg); /* 文字改深色 */
             padding: 12px 30px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 20px;
             transition: background-color 0.2s;
         }
 
-        .cta-button:hover { background-color: #1d4ed8; }
+        .cta-button:hover { background-color: #e5e7eb; }
 
         footer {
-            background-color: #f8f9fa;
+            background-color: #111; /* 更深的底色 */
             color: #666;
             text-align: center;
             padding: 30px 0;
             font-size: 0.9rem;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #333;
         }
 
-        /* RWD */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             .section-full { padding: 40px 0; }
@@ -190,17 +216,19 @@
 
     <section class="section-full bg-white">
         <div class="container">
-            <div class="nav-header">
-                <a href="index.html" class="back-link">返回作品集首頁</a>
-            </div>
+            <nav class="nav-header">
+                <a href="index.html" class="back-link">返回首頁</a>
+                <span class="nav-project-name">Portfolio | 智慧學員簽到與管理系統</span>
+            </nav>
 
             <header>
+                <div class="tag-ai">AI DEVELOPMENT</div>
                 <h1>智慧學員簽到與管理系統</h1>
                 <div class="subtitle">Gen AI 協作開發實戰 | 志工服務數位轉型解決方案</div>
             </header>
 
             <div class="video-wrapper">
-                <video id="demoVideo" muted loop playsinline controls>
+                <video controls width="100%" height="100%">
                     <source src="project2-demo.mp4" type="video/mp4">
                     您的瀏覽器不支援影片播放，請下載影片觀看。
                 </video>
@@ -272,9 +300,9 @@
         </div>
     </section>
 
-    <section class="cta-section">
+    <section class="section-full bg-dark cta-section">
         <div class="container">
-            <h2 style="font-size: 2rem; margin-bottom: 10px;">Ready to create value?</h2>
+            <h2>Ready to create value?</h2>
             <p>Let's discuss how we can integrate strategy and technology.</p>
             <a href="mailto:your-email@example.com" class="cta-button">Contact Me</a>
         </div>
@@ -283,26 +311,6 @@
     <footer>
         &copy; 2026 Rowan Huang.
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var video = document.getElementById('demoVideo');
-            
-            // 設定 1.5 秒延遲
-            setTimeout(function() {
-                // 嘗試播放 (瀏覽器通常要求影片為靜音 muted 才能自動播放)
-                var playPromise = video.play();
-
-                if (playPromise !== undefined) {
-                    playPromise.then(function() {
-                        console.log("Auto-play started.");
-                    }).catch(function(error) {
-                        console.log("Auto-play was prevented by browser settings (user interaction usually required).");
-                    });
-                }
-            }, 1500); // 1500 毫秒 = 1.5 秒
-        });
-    </script>
 
 </body>
 </html>
