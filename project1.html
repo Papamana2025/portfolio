@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市場營運流程再造與產品策略 | Rowan Huang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              tomoBlue: '#227BAC',
+              tomoYellow: '#F3C64E',
+              tomoGray: '#F5F5F7',
+              darkBlue: '#1a5f8a',
+            },
+            fontFamily: {
+              sans: ['Helvetica Neue', 'Arial', 'Microsoft JhengHei', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .img-container { position: relative; overflow: hidden; }
+        .img-hover-zoom { transition: transform 0.7s ease; }
+        .img-container:hover .img-hover-zoom { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans selection:bg-tomoYellow selection:text-tomoBlue">
+
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center text-tomoBlue font-bold hover:text-darkBlue transition">
+                <span class="mr-2">←</span> 返回首頁
+            </a>
+            <div class="text-sm font-bold text-gray-400">PROJECT 01</div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-20 bg-tomoGray text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase mb-4 block">STRATEGY & OPERATIONS</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                全通路市場營運流程再造<br>與產品銷售結構優化
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                整合 BPR 流程重塑、自動化技術與銷售引導設計，解決數據斷鏈，實現品牌與營收的雙向增長。
+            </p>
+        </div>
+    </header>
+
+    <section id="bpr" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div class="sticky top-32">
+                    <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">01. BPR (Business Process Reengineering)</span>
+                    <h2 class="text-3xl font-bold mt-3 mb-6">ERP & EC 營運流程再造</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        <strong class="text-gray-900">痛點：</strong>部門數據脫節，人工轉檔低效導致訂單高峰期延遲。<br><br>
+                        <strong class="text-gray-900">解方：</strong>不只是寫程式，更是「流程重塑」。利用 VBA 自動化腳本，將多平台數據流無縫串接，釋放團隊生產力。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                            <div class="text-2xl font-bold text-tomoBlue mb-1">-66%</div>
+                            <div class="text-sm text-gray-600">ERP 導入時程</div>
+                        </div>
+                        <div class="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                            <div class="text-2xl font-bold text-gray-800 mb-1">+60%</div>
+                            <div class="text-sm text-gray-600">存貨準確率</div>
+                        </div>
+                        <div class="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                            <div class="text-2xl font-bold text-gray-700 mb-1">-50%</div>
+                            <div class="text-sm text-gray-500">數據產出時間</div>
+                        </div>
+                        <div class="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                            <div class="text-2xl font-bold text-green-600 mb-1">+2%</div>
+                            <div class="text-sm text-gray-600">營收成長</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative bg-white p-4 rounded-3xl shadow-sm border border-gray-200">
+                     <div class="img-container rounded-2xl overflow-hidden bg-gray-50 min-h-[400px] flex items-center justify-center border-2 border-dashed border-gray-200">
+                        <img src="bpr-flow.jpg" alt="請上傳 bpr-flow.jpg" class="img-hover-zoom w-full h-auto object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'text-center p-10\'><p class=\'text-gray-400 font-bold\'>等待圖片上傳...</p><p class=\'text-sm text-gray-400 mt-2\'>請確保 bpr-flow.jpg 已上傳至 GitHub</p></div>'">
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="py-24 bg-tomoGray">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">02. Sales-Led Design</span>
+                <h2 class="text-3xl font-bold mt-3">銷售引導設計：從數據到視覺的轉化</h2>
+                <div class="max-w-4xl mx-auto mt-8 relative">
+                    <p class="text-xl font-bold text-gray-800 leading-relaxed z-10 relative">
+                        讓新品在最適時機、以最有效的方式被市場接受，<br>
+                        同時實現<span class="bg-tomoYellow/30 px-1">品牌、團隊與消費者的共贏</span>。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-900">行銷引導設計 (Sales-Led Design)</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        設計師不該憑空想像。我負責彙整銷售面的「實操面向」，為設計團隊提供精準的戰略地圖，確保產出即戰力。
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-blue-100 text-tomoBlue rounded-full flex items-center justify-center font-bold">1</div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-800">同業與異業資訊彙整</h4>
+                                <p class="text-sm text-gray-600 mt-1">分析競品視覺策略，找出差異化切入點，確保視覺產出具備市場競爭力。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center font-bold">2</div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-gray-800">產品賣點轉化</h4>
+                                <p class="text-sm text-gray-600 mt-1">將抽象的產品規格（如：義大利皮革），轉化為具體的視覺情境與痛點解決方案。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="order-1 md:order-2">
+                    <div class="bg-white p-3 rounded-2xl border border-gray-200 shadow-xl rotate-1 hover:rotate-0 transition duration-500">
+                        <div class="img-container rounded-xl overflow-hidden min-h-[400px] flex items-center justify-center bg-gray-50 border border-gray-100">
+                             <img src="product-strategy.jpg" alt="請上傳 product-strategy.jpg" class="img-hover-zoom w-full h-auto object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'text-center p-10\'><p class=\'text-gray-400 font-bold\'>等待圖片上傳...</p><p class=\'text-sm text-gray-400 mt-2\'>請確保 product-strategy.jpg 已上傳</p></div>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <div class="flex flex-col items-center gap-4">
+            <h2 class="text-2xl font-bold">Ready to create value?</h2>
+            <a href="mailto:hungchungwm@gmail.com" class="px-8 py-3 bg-tomoBlue text-white rounded-full font-bold hover:bg-blue-600 transition">Contact Me</a>
+            <p class="text-gray-500 text-sm mt-4">© 2026 Rowan Huang.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
