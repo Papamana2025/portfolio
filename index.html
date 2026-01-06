@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rowan Huang | Strategy & Integration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 簡單的滾動特效 */
+        html { scroll-behavior: smooth; }
+        .fade-in { animation: fadeIn 2s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold tracking-widest text-gray-900">ROWAN HUANG</h1>
+            <div class="space-x-6 text-sm hidden md:block">
+                <a href="#about" class="hover:text-blue-600 transition">About</a>
+                <a href="#integration" class="hover:text-blue-600 transition">Integration</a>
+                <a href="#product" class="hover:text-blue-600 transition">Product</a>
+                <a href="#data" class="hover:text-blue-600 transition">Data</a>
+                <a href="#contact" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="h-screen flex flex-col justify-center items-center text-center px-4 fade-in">
+        <p class="text-blue-600 font-medium mb-4 tracking-widest">PORTFOLIO</p>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 text-gray-900 leading-tight">
+            Bridging Strategy <br> <span class="text-gray-400">&</span> Execution.
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mb-10">
+            以營運策略與系統整合為核心，綜合商控與數據分析。<br>
+            推動效率與績效雙成長的混合型人才。
+        </p>
+        <div class="flex space-x-4">
+            <a href="#integration" class="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-lg">View Projects</a>
+            <a href="mailto:hungchungwm@gmail.com" class="px-8 py-3 border border-gray-300 rounded-lg hover:bg-white transition">Get in Touch</a>
+        </div>
+    </header>
+
+    <section id="integration" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-blue-600 font-bold text-sm tracking-wider">01. SYSTEM INTEGRATION</span>
+                    <h2 class="text-4xl font-bold mt-2 mb-6">ERP & EC 自動化整合</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        針對部門數據脫節與人工轉檔低效問題，開發 VBA 自動化解決方案。解決了訂單高峰期的延遲處理，大幅降低營收損失與額外成本。
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <span class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold mr-4">-66%</span>
+                            <span>ERP 導入時程縮減</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold mr-4">+60%</span>
+                            <span>存貨準確率提升</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gray-100 p-8 rounded-2xl shadow-inner border border-gray-200">
+                    <div class="h-64 flex items-center justify-center text-gray-400 border-2 border-dashed border-gray-300 rounded-lg">
+                        [ 互動式自動化流程圖 Placeholder ]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold text-sm tracking-wider">02. PRODUCT & TOOLS</span>
+                <h2 class="text-4xl font-bold mt-2">AI 驅動開發：課程報到系統</h2>
+            </div>
+            
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-10 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-4">從痛點到產品實踐</h3>
+                        <p class="text-gray-600 mb-6">
+                            利用 Gemini Canvas 快速構建的原型。解決現場活動報到混亂問題，實現快速檢索與即時數據反饋。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:underline">
+                            試用 Live Demo <span class="ml-2">→</span>
+                        </a>
+                    </div>
+                    <div class="bg-gray-800 h-96 flex items-center justify-center">
+                        <span class="text-white opacity-50">[ Vibe Code 系統預覽區 ]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="data" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 bg-gray-100 p-2 rounded-2xl">
+                     <div class="h-64 bg-white rounded-xl shadow-sm flex items-center justify-center text-gray-400">
+                        [ 銷售數據儀表板 Placeholder ]
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <span class="text-blue-600 font-bold text-sm tracking-wider">03. DATA INSIGHT</span>
+                    <h2 class="text-4xl font-bold mt-2 mb-6">EC Sales Flow Insight</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        將複雜的庫存、銷售與毛利數據視覺化。不只是看見數據，而是發現「YOY 成長 5-8%」背後的關鍵驅動因子。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12 text-center" id="contact">
+        <h2 class="text-2xl font-bold mb-6">Let's Work Together</h2>
+        <p class="text-gray-400 mb-8">hungchungwm@gmail.com</p>
+        <p class="text-xs text-gray-600">© 2024 Rowan Huang. Built with Strategy & Code.</p>
+    </footer>
+
+</body>
+</html>
