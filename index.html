@@ -3,196 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rowan Huang | 策略與整合作品集</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              tomoBlue: '#227BAC',       /* Tomofun 科技藍 */
-              tomoYellow: '#F3C64E',     /* Tomofun 活力黃 */
-              tomoGray: '#F5F5F7',       /* 質感灰背景 */
-              darkBlue: '#1a5f8a',       /* 深一點的藍，用於文字 */
-            },
-            fontFamily: {
-              sans: ['Helvetica Neue', 'Arial', 'Microsoft JhengHei', 'sans-serif'],
-            }
-          }
-        }
-      }
-    </script>
+    <title>My Professional Portfolio - Business Strategy & Integration</title>
     <style>
-        html { scroll-behavior: smooth; }
-        .fade-up { animation: fadeUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-        
-        .strategy-card { transition: all 0.3s ease; }
-        .strategy-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #333;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+        }
 
-        /* 圖片懸停放大效果 */
-        .img-zoom-container { overflow: hidden; }
-        .img-zoom { transition: transform 0.5s ease; }
-        .group:hover .img-zoom { transform: scale(1.05); }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background-color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #111;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        /* Grid Layout */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding-bottom: 60px;
+        }
+
+        /* Project Card */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .tag-strategy { background-color: #e0f2fe; color: #0284c7; }
+        .tag-ai { background-color: #fef3c7; color: #d97706; }
+        .tag-data { background-color: #f3f4f6; color: #4b5563; }
+
+        .project-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            color: #1f2937;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-top: auto;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            border-top: 1px solid #eee;
+            margin-top: auto;
+        }
+
+        /* RWD */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800 font-sans selection:bg-tomoYellow selection:text-tomoBlue">
+<body>
 
-    <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <a href="index.html" class="flex items-center space-x-2">
-                    <div class="w-3 h-3 bg-tomoBlue rounded-full"></div>
-                    <div class="w-3 h-3 bg-tomoYellow rounded-full"></div>
-                    <h1 class="text-xl font-bold tracking-widest text-gray-900 ml-2">ROWAN HUANG</h1>
-                </a>
-            </div>
-            <div class="space-x-8 text-sm font-bold text-gray-600 hidden md:block">
-                <a href="#philosophy" class="hover:text-tomoBlue transition">核心策略</a>
-                <a href="#portfolio" class="hover:text-tomoBlue transition">精選案例</a>
-                <a href="mailto:hungchungwm@gmail.com" class="px-4 py-2 bg-tomoBlue text-white rounded-md hover:bg-blue-800 transition">聯繫我</a>
-            </div>
-        </div>
-    </nav>
-
-    <header class="pt-32 pb-20 bg-tomoGray text-center px-4">
-        <div class="max-w-7xl mx-auto">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-                Bridging Data & Real-World Application
-            </h1>
-            <h2 class="text-2xl md:text-3xl font-black text-darkBlue mb-8">
-                不只是策略規劃，更具備落地執行的技術力。
-            </h2>
-            <div class="max-w-3xl mx-auto mb-10">
-                <p class="text-base md:text-lg text-gray-600 leading-relaxed border-l-4 border-tomoYellow pl-6 text-left bg-white/50 py-4 rounded-r-lg shadow-sm">
-                    以營運策略與系統整合為核心，結合商控與數據分析。<br>
-                    <span class="text-tomoBlue">專注於市場營運流程優化與銷售結構管理，推動效率與績效雙成長。</span>
-                </p>
-            </div>
-            <div class="flex flex-col items-center gap-3">
-                <a href="#portfolio" class="px-8 py-3 bg-tomoBlue text-white font-bold rounded-lg hover:bg-blue-800 transition shadow-lg hover:shadow-tomoBlue/30">
-                    查看精選案例
-                </a>
-                <span class="text-gray-400 text-sm font-medium tracking-wide mt-2">Business Strategy × Technical Execution</span>
-            </div>
+    <header>
+        <div class="container">
+            <h1>portfolio</h1>
+            <div class="subtitle">My Professional Portfolio - Business Strategy & Integration</div>
         </div>
     </header>
 
-    <section id="philosophy" class="py-20 bg-white relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">MY PHILOSOPHY</span>
-                <h2 class="text-3xl font-bold mt-2 text-gray-900">縱向深耕策略，橫向整合價值</h2>
-                <div class="w-16 h-1 bg-tomoYellow mx-auto mt-4 rounded-full"></div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoBlue transition-colors duration-300"></div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Integration</h3>
-                    <div class="mb-6">
-                        <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
-                        <p class="text-gray-700 text-base leading-relaxed">單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，消除內耗。</p>
-                    </div>
-                    <div class="w-full h-px bg-gray-200 mb-6"></div>
-                    <div>
-                        <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
-                        <p class="text-gray-600 text-sm">透過自動化技術串接斷鏈節點，建立標準化流程，讓系統為人服務。</p>
-                    </div>
+    <div class="container">
+        <h2 class="section-title">精選案例</h2>
+        <p class="section-desc">從策略整合到開發實踐的完整軌跡</p>
+
+        <div class="project-grid">
+            
+            <a href="project1.html" class="project-card">
+                <div class="card-image">
+                    <img src="product-strategy.jpg" alt="Market Strategy">
                 </div>
-                <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoYellow transition-colors duration-300"></div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Product</h3>
-                    <div class="mb-6">
-                        <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
-                        <p class="text-gray-700 text-base leading-relaxed">產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。</p>
-                    </div>
-                    <div class="w-full h-px bg-gray-200 mb-6"></div>
-                    <div>
-                        <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
-                        <p class="text-gray-600 text-sm">快速原型驗證，在最小可行性產品(MVP)中獲取回饋。用技術實現創意，縮短從概念到市場的距離。</p>
-                    </div>
+                <div class="card-content">
+                    <div class="card-tag tag-strategy">STRATEGY & OPERATIONS</div>
+                    <h3>市場營運流程再造與產品策略</h3>
+                    <p>涵蓋 BPR 流程自動化、銷售引導設計與數據洞察。解決部門數據脫節，推動營收與效率雙成長。</p>
+                    <div class="card-link">查看完整案例 →</div>
                 </div>
-                <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoBlue transition-colors duration-300"></div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Data</h3>
-                    <div class="mb-6">
-                        <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
-                        <p class="text-gray-700 text-base leading-relaxed">直覺會有偏差，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。</p>
-                    </div>
-                    <div class="w-full h-px bg-gray-200 mb-6"></div>
-                    <div>
-                        <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
-                        <p class="text-gray-600 text-sm">將冰冷的數字轉化為可視化的洞察。監控關鍵指標，即時修正方向，讓數據成為成長的導航。</p>
-                    </div>
+            </a>
+
+            <a href="project2.html" class="project-card">
+                <div class="card-image">
+                    <img src="coding.jpg" alt="AI Development">
                 </div>
-            </div>
+                <div class="card-content">
+                    <div class="card-tag tag-ai">AI DEVELOPMENT</div>
+                    <h3>課程報到系統 (Video Demo)</h3>
+                    <p>使用 Gemini Canvas 與 Vibe Code 協作開發。解決現場活動報到混亂痛點，實現快速檢索與即時反饋。</p>
+                    <div class="card-link">查看專案詳情 →</div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card">
+                <div class="card-image">
+                    <img src="data.jpg" alt="Data Visualization">
+                </div>
+                <div class="card-content">
+                    <div class="card-tag tag-data">DATA VISUALIZATION</div>
+                    <h3>互動式儀表板 (Coming Soon)</h3>
+                    <p>將數據轉化為決策引擎。目前正在整理相關案例數據與視覺化呈現。</p>
+                    <div class="card-link">建構中...</div>
+                </div>
+            </a>
+
         </div>
-    </section>
-
-    <section id="portfolio" class="py-24 bg-tomoGray">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900">精選案例</h2>
-                <p class="mt-4 text-gray-600">從策略整合到開發實踐的完整軌跡</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <a href="project1.html" class="block group">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 h-full flex flex-col">
-                        <div class="h-48 bg-gray-200 img-zoom-container relative">
-                            <img src="strategy.jpg" alt="Strategy & Operations" class="w-full h-full object-cover img-zoom" onerror="this.src='https://via.placeholder.com/400x300?text=Upload+strategy.jpg'">
-                            <div class="absolute inset-0 bg-tomoBlue/10 group-hover:bg-tomoBlue/0 transition"></div>
-                        </div>
-                        <div class="p-8 flex-1">
-                            <span class="text-xs font-bold text-tomoBlue bg-blue-50 px-2 py-1 rounded mb-3 inline-block">STRATEGY & OPERATIONS</span>
-                            <h3 class="text-2xl font-bold mb-3 group-hover:text-tomoBlue transition">市場營運流程再造與產品策略</h3>
-                            <p class="text-gray-600 text-sm line-clamp-3">
-                                涵蓋 BPR 流程自動化、銷售引導設計與數據洞察。解決部門數據脫節，推動營收與效率雙成長。
-                            </p>
-                            <div class="mt-6 flex items-center text-tomoBlue font-bold text-sm">
-                                查看完整案例 <span class="ml-2 transform group-hover:translate-x-1 transition">→</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-<a href="project2.html" class="project-card">
-    <div class="card-image">
-        <img src="coding.jpg" alt="AI Development">
     </div>
-    <div class="card-content">
-        <div class="card-tag tag-ai">AI DEVELOPMENT</div>
-        <h3>課程報到系統 (Video Demo)</h3>
-        <p>使用 Gemini Canvas 與 Vibe Code 協作開發。解決現場活動報到混亂痛點，實現快速檢索與即時反饋。</p>
-        <div class="card-link">查看專案詳情 →</div>
-    </div>
-</a>
 
-                <div class="block group opacity-80 hover:opacity-100 transition cursor-not-allowed">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-sm h-full flex flex-col border border-gray-200">
-                        <div class="h-48 bg-gray-200 img-zoom-container relative">
-                            <img src="data.jpg" alt="Data Visualization" class="w-full h-full object-cover img-zoom transition duration-500" onerror="this.src='https://via.placeholder.com/400x300?text=Upload+data.jpg'">
-                        </div>
-                        <div class="p-8 flex-1">
-                            <span class="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded mb-3 inline-block">DATA VISUALIZATION</span>
-                            <h3 class="text-2xl font-bold mb-3 text-gray-600">互動式儀表板 (Coming Soon)</h3>
-                            <p class="text-gray-400 text-sm">
-                                將數據轉化為決策引擎。目前正在整合中。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-12 text-center border-t border-gray-800">
-        <p class="text-gray-500 text-sm">© 2026 Rowan Huang.</p>
+    <footer>
+        &copy; 2026 Portfolio. All rights reserved.
     </footer>
 
 </body>
