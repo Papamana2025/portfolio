@@ -31,7 +31,6 @@
         
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         
-        /* 策略矩陣的卡片效果 */
         .strategy-card {
             transition: all 0.3s ease;
         }
@@ -63,15 +62,14 @@
         
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-tomoBlue via-tomoYellow to-tomoBlue"></div>
         <div class="absolute -top-20 -right-20 w-96 h-96 bg-tomoYellow/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent"></div>
-
-        <div class="relative z-10 max-w-5xl mx-auto mt-10">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-6 fade-up whitespace-nowrap">
-                Bridging Data & Real-World Application
+        
+        <div class="relative z-10 max-w-5xl mx-auto mt-10 flex flex-col items-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-6 fade-up text-center">
+                Bridging Data &<br class="md:hidden"> Real-World Application
             </h1>
 
-            <h2 class="text-2xl md:text-4xl font-black text-darkBlue mb-8 fade-up delay-100 leading-normal">
-                不只是策略規劃，<br class="md:hidden">更具備落地執行的技術力。
+            <h2 class="text-2xl md:text-4xl font-black text-darkBlue mb-8 fade-up delay-100 leading-normal text-center">
+                不只是策略規劃，<br>更具備落地執行的技術力。
             </h2>
 
             <div class="max-w-3xl mx-auto mb-10 fade-up delay-200">
@@ -81,11 +79,11 @@
                 </p>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center fade-up delay-300">
-                <a href="#philosophy" class="px-8 py-3 bg-tomoBlue text-white font-bold rounded-lg hover:bg-blue-800 transition shadow-lg hover:shadow-tomoBlue/30 w-full md:w-auto">
+            <div class="flex flex-col items-center fade-up delay-300 gap-3">
+                <a href="#philosophy" class="px-8 py-3 bg-tomoBlue text-white font-bold rounded-lg hover:bg-blue-800 transition shadow-lg hover:shadow-tomoBlue/30">
                     查看我的策略思維
                 </a>
-                <span class="text-gray-400 text-sm font-medium">Business Strategy × Technical Execution</span>
+                <span class="text-gray-400 text-sm font-medium tracking-wide mt-2">Business Strategy × Technical Execution</span>
             </div>
         </div>
     </header>
@@ -103,66 +101,57 @@
                 
                 <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoBlue transition-colors duration-300"></div>
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-bold text-gray-900">Integration</h3>
-                        <span class="text-xs font-bold bg-gray-200 text-gray-600 px-2 py-1 rounded">系統整合</span>
-                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Integration</h3>
                     
                     <div class="mb-6">
                         <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
                         <p class="text-gray-700 font-medium leading-relaxed">
-                            解決部門數據脫節與效率低落。策略共識先行，避免團隊做白工。
+                            單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，才能消除內耗。
                         </p>
                     </div>
                     <div class="w-full h-px bg-gray-200 mb-6"></div>
                     <div>
                         <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
                         <p class="text-gray-600 text-sm">
-                            利用 VBA 與自動化腳本串接 ERP/EC，將繁瑣的人工流程轉化為一鍵執行的系統邏輯。
+                            透過自動化技術串接斷鏈的節點，建立無縫協作的標準化流程，讓系統為人服務，而非人服務系統。
                         </p>
                     </div>
                 </div>
 
                 <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoYellow transition-colors duration-300"></div>
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-bold text-gray-900">Product</h3>
-                        <span class="text-xs font-bold bg-gray-200 text-gray-600 px-2 py-1 rounded">產品策略</span>
-                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Product</h3>
 
                     <div class="mb-6">
                         <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
                         <p class="text-gray-700 font-medium leading-relaxed">
-                            產品需在最適時機，以最有效方式被市場接受。實現品牌與消費者的雙贏。
+                            產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。
                         </p>
                     </div>
                     <div class="w-full h-px bg-gray-200 mb-6"></div>
                     <div>
                         <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
                         <p class="text-gray-600 text-sm">
-                            利用 AI 工具 (Gemini Canvas) 快速構建原型 (如報到系統)，解決現場痛點，驗證產品價值。
+                            快速原型驗證，在最小可行性產品(MVP)中獲取回饋。用技術實現創意，縮短從概念到市場的距離。
                         </p>
                     </div>
                 </div>
 
                 <div class="strategy-card bg-gray-50 rounded-2xl p-8 border border-gray-100 relative overflow-hidden group">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-tomoBlue transition-colors duration-300"></div>
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-bold text-gray-900">Data</h3>
-                        <span class="text-xs font-bold bg-gray-200 text-gray-600 px-2 py-1 rounded">數據結果</span>
-                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Data</h3>
 
                     <div class="mb-6">
                         <span class="text-xs font-bold text-tomoBlue uppercase tracking-wider mb-1 block">Why (策略思維)</span>
                         <p class="text-gray-700 font-medium leading-relaxed">
-                            想與行之間的落差，需憑數據為共識。數據不是終點，而是優化的起點。
+                            直覺會有偏差，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。
                         </p>
                     </div>
                     <div class="w-full h-px bg-gray-200 mb-6"></div>
                     <div>
                         <span class="text-xs font-bold text-tomoYellow uppercase tracking-wider mb-1 block">How (落地執行)</span>
                         <p class="text-gray-600 text-sm">
-                            建構視覺化儀表板，監控庫存周轉與毛利結構，將 Insight 轉化為具體的營收成長 (+2%)。
+                            將冰冷的數字轉化為可視化的洞察。監控關鍵指標，即時修正方向，讓數據成為成長的導航。
                         </p>
                     </div>
                 </div>
@@ -178,8 +167,8 @@
                     <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">01. System Integration</span>
                     <h2 class="text-4xl font-bold mt-3 mb-6">ERP & EC 自動化整合</h2>
                     <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                        <strong class="text-gray-900">痛點：</strong>部門數據脫節，人工轉檔低效導致訂單高峰期延遲。<br><br>
-                        <strong class="text-gray-900">解方：</strong>開發 VBA 自動化腳本，將多平台數據流無縫串接。不需昂貴系統升級，利用現有工具即達成效率躍升。
+                        <strong class="text-gray-900">案例背景：</strong>部門數據脫節，人工轉檔低效導致訂單高峰期延遲。<br><br>
+                        <strong class="text-gray-900">解決方案：</strong>開發 VBA 自動化腳本，將多平台數據流無縫串接。不需昂貴系統升級，利用現有工具即達成效率躍升。
                     </p>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
@@ -197,6 +186,18 @@
                         <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
                             <div class="text-2xl font-bold text-green-600 mb-1">+2%</div>
                             <div class="text-sm text-gray-600">營收成長</div>
+                        </div>
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100 col-span-2">
+                             <div class="flex justify-between">
+                                <div>
+                                    <div class="text-2xl font-bold text-gray-800 mb-1">26% / 7%</div>
+                                    <div class="text-sm text-gray-600">客服回應率 / 低退貨率</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-2xl font-bold text-tomoYellow mb-1">10%</div>
+                                    <div class="text-sm text-gray-600">存貨掌握率</div>
+                                </div>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -260,44 +261,23 @@
 
     <section id="data" class="py-24 bg-tomoGray overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 relative h-96 bg-white rounded-3xl border border-gray-200 p-6 flex items-center justify-center shadow-sm">
-                    <div class="absolute w-32 h-32 bg-blue-50 rounded-full flex items-center justify-center text-center text-xs font-bold text-tomoBlue top-10 left-10 float-bubble" style="animation-delay: 0s;">
-                        Inventory<br>Supply
-                    </div>
-                    <div class="absolute w-40 h-40 bg-white border-2 border-tomoBlue rounded-full flex items-center justify-center text-center text-sm font-bold text-gray-800 z-10 shadow-lg float-bubble" style="animation-delay: 1s;">
-                        Sales /<br>Channel
-                    </div>
-                    <div class="absolute w-28 h-28 bg-yellow-50 rounded-full flex items-center justify-center text-center text-xs font-bold text-gray-700 bottom-10 right-10 float-bubble" style="animation-delay: 2s;">
-                        Marketing<br>Growth
-                    </div>
-                </div>
+            <div class="text-center mb-16">
+                <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">03. Data Visualization</span>
+                <h2 class="text-4xl font-bold mt-3">互動式儀表板 (Dashboard)</h2>
+                <p class="mt-4 text-gray-600">將數據轉化為決策引擎 (Project by Gemini Canvas)</p>
+            </div>
 
-                <div class="order-1 md:order-2">
-                    <span class="text-tomoBlue font-bold text-sm tracking-wider uppercase">03. Data Insight</span>
-                    <h2 class="text-4xl font-bold mt-3 mb-6">EC 銷售數據洞察</h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        將複雜的庫存、銷售與毛利數據視覺化。不只是看見數據，而是發現 <span class="bg-yellow-200 px-1 font-bold text-gray-900">YOY 成長 5-8%</span> 背後的關鍵驅動因子。
-                    </p>
-                    <div class="grid grid-cols-2 gap-y-6 gap-x-4">
-                        <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-tomoBlue">5-8%</span>
-                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">YOY 營收成長</span>
+            <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 flex flex-col h-[600px] shadow-sm">
+                 <div class="w-full h-full relative flex items-center justify-center bg-gray-50">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-tomoBlue text-3xl">
+                            📊
                         </div>
-                        <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-gray-800">26%</span>
-                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">客服回應率</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-tomoYellow">10%</span>
-                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">存貨掌握率</span>
-                        </div>
-                        <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-green-600">7%</span>
-                            <span class="text-sm text-gray-500 border-t border-gray-300 pt-1 mt-1">低退貨率</span>
-                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Dashboard Loading...</h3>
+                        <p class="text-gray-500 mt-2">準備嵌入 Vibe Code 儀表板</p>
+                        <p class="text-xs text-gray-400 mt-4">(請確保 dashboard.html 已上傳)</p>
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </section>
