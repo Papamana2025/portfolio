@@ -6,82 +6,82 @@
     <title>課程報到與學員管理系統 | Portfolio</title>
     <style>
         :root {
-            --primary-color: #2563eb;
-            --text-color: #333;
-            --light-grey: #f8f9fa;
+            /* 統一定義顏色變數，確保與 Project 1 一致 */
+            --primary-blue: #0ea5e9; /* 作品1 的亮藍色 */
+            --dark-navy: #111827;    /* 作品1 的深藍底色 */
+            --text-main: #333333;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
             --white: #ffffff;
-            --dark-bg: #1f2937; /* 深色背景 */
-            --border-color: #e5e7eb;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.7;
-            color: var(--text-color);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
             background-color: var(--white);
         }
 
-        /* 全寬度區塊 */
-        .section-full {
-            width: 100%;
-            padding: 60px 0;
-        }
-
-        .bg-white { background-color: var(--white); }
-        .bg-grey { background-color: var(--light-grey); }
-        .bg-dark { background-color: var(--dark-bg); color: var(--white); }
-
+        /* 通用容器 */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* 導覽列 (左右佈局) */
-        .nav-header {
-            padding: 20px 0 40px 0; /* 增加下方間距 */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee; /* 增加分隔線 */
+        /* --- 1. 頂部導覽列 (與 Project 1 統一) --- */
+        .nav-bar {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e7eb;
             margin-bottom: 40px;
+            background-color: var(--white);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between; /* 左右對齊 */
+            align-items: center;
         }
 
         .back-link {
             text-decoration: none;
-            color: #666;
+            color: var(--primary-blue); /* 藍色連結 */
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
-            transition: color 0.2s;
+            transition: opacity 0.2s;
         }
 
-        .back-link:hover { color: var(--primary-color); }
+        .back-link:hover { opacity: 0.8; }
         .back-link::before { content: '←'; margin-right: 8px; }
 
-        .nav-project-name {
-            color: #999;
+        .project-meta {
+            color: var(--text-light);
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 400;
         }
 
-        /* 標題區 */
-        header {
-            text-align: center;
-            margin-bottom: 40px;
+        /* --- 內容區塊 --- */
+        .section-content {
+            padding: 40px 0;
         }
 
-        /* 新增：AI Development 標籤 */
+        .bg-grey { background-color: var(--bg-light); }
+        .bg-white { background-color: var(--white); }
+
+        /* 標題與標籤 */
+        header { text-align: center; margin-bottom: 40px; }
+
         .tag-ai { 
             background-color: #fef9c3; 
             color: #ca8a04; 
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             padding: 6px 12px;
             border-radius: 4px;
             display: inline-block;
@@ -90,217 +90,176 @@
 
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 15px;
-            margin-top: 0;
+            margin: 0 0 10px 0;
             color: #111;
+            font-weight: 700;
         }
 
         .subtitle {
             font-size: 1.2rem;
-            color: #666;
+            color: var(--text-light);
             font-weight: 400;
         }
 
-        /* 影片展示區 */
-        .video-wrapper {
+        /* --- 影片區塊 (修復播放問題) --- */
+        .video-container {
             width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
+            max-width: 960px;
+            margin: 0 auto 60px auto;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             background-color: #000;
-            aspect-ratio: 16 / 9; 
-            position: relative;
+            aspect-ratio: 16/9; /* 強制固定比例 */
         }
 
         video {
             width: 100%;
             height: 100%;
             display: block;
+            object-fit: contain;
         }
 
-        /* 內容標題樣式 */
-        h2 {
-            font-size: 1.8rem;
-            margin-top: 0;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        /* 深色區塊的 H2 需要變色 */
-        .bg-dark h2 { color: var(--white); }
-        .bg-white h2, .bg-grey h2 { color: #111; }
+        /* 內文樣式 */
+        h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 30px; text-align: center; color: #111; }
+        h3 { font-size: 1.25rem; margin-top: 30px; margin-bottom: 10px; color: var(--primary-blue); }
+        p, li { font-size: 1.05rem; color: #4b5563; margin-bottom: 15px; }
+        ul { padding-left: 20px; max-width: 800px; margin: 0 auto; }
 
-        h3 {
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        p, li { font-size: 1.05rem; margin-bottom: 15px; }
-        ul { padding-left: 20px; }
-
-        /* 技術堆疊 */
-        .compact-section { padding: 40px 0; }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .tag {
-            background-color: #eff6ff;
-            color: var(--primary-color);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid #dbeafe;
-        }
-
-        .privacy-box {
-            background-color: #fff8f8;
-            border: 1px solid #fee2e2;
-            border-left: 4px solid #ef4444;
-            padding: 20px;
-            border-radius: 8px;
-            color: #991b1b;
-            font-size: 0.95rem;
-            text-align: center;
-        }
-
-        /* 頁尾 CTA (深色風格) */
+        /* --- 底部 CTA 區塊 (完全複製 Project 1 樣式) --- */
         .cta-section {
+            background-color: var(--dark-navy); /* 深藍底色 */
+            color: var(--white);
             text-align: center;
             padding: 80px 20px;
-            border-top: none; /* 移除邊線，因為背景已不同 */
         }
 
-        .cta-section h2 { margin-bottom: 10px; }
-        .cta-section p { color: #ccc; margin-bottom: 30px; }
+        .cta-section h2 {
+            color: var(--white); /* 覆寫 h2 顏色為白色 */
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-section p {
+            color: #94a3b8; /* 淺灰文字 */
+            margin-bottom: 30px;
+        }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--white); /* 按鈕改白色 */
-            color: var(--dark-bg); /* 文字改深色 */
-            padding: 12px 30px;
-            border-radius: 30px;
+            background-color: var(--primary-blue); /* 藍色按鈕 */
+            color: var(--white);
+            padding: 14px 40px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1.1rem;
             transition: background-color 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .cta-button:hover { background-color: #e5e7eb; }
+        .cta-button:hover {
+            background-color: #0284c7; /* 深一點的藍色 */
+        }
 
+        /* 頁尾版權 */
         footer {
-            background-color: #111; /* 更深的底色 */
-            color: #666;
+            background-color: var(--dark-navy);
+            color: #4b5563;
             text-align: center;
-            padding: 30px 0;
+            padding-bottom: 40px;
             font-size: 0.9rem;
-            border-top: 1px solid #333;
+            border-top: none; /* 移除分隔線，與 CTA 融合 */
+        }
+        
+        .footer-text {
+            color: #64748b;
         }
 
+        /* RWD */
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            .section-full { padding: 40px 0; }
+            .nav-content { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="section-full bg-white">
-        <div class="container">
-            <nav class="nav-header">
-                <a href="index.html" class="back-link">返回首頁</a>
-                <span class="nav-project-name">Portfolio | 智慧學員簽到與管理系統</span>
-            </nav>
-
-            <header>
-                <div class="tag-ai">AI DEVELOPMENT</div>
-                <h1>智慧學員簽到與管理系統</h1>
-                <div class="subtitle">Gen AI 協作開發實戰 | 志工服務數位轉型解決方案</div>
-            </header>
-
-            <div class="video-wrapper">
-                <video controls width="100%" height="100%">
-                    <source src="project2-demo.mp4" type="video/mp4">
-                    您的瀏覽器不支援影片播放，請下載影片觀看。
-                </video>
-            </div>
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a href="index.html" class="back-link">返回首頁</a>
+            <div class="project-meta">Portfolio | 智慧學員簽到與管理系統</div>
         </div>
-    </section>
+    </nav>
 
-    <section class="section-full bg-grey">
+    <div class="container">
+        <header>
+            <div class="tag-ai">AI DEVELOPMENT</div>
+            <h1>智慧學員簽到與管理系統</h1>
+            <div class="subtitle">Gen AI 協作開發實戰 | 志工服務數位轉型解決方案</div>
+        </header>
+
+        <div class="video-container">
+            <video controls autoplay muted loop playsinline>
+                <source src="project2-demo.mp4" type="video/mp4">
+                您的瀏覽器不支援影片播放，請下載影片觀看。
+            </video>
+        </div>
+    </div>
+
+    <section class="section-content bg-grey">
         <div class="container">
             <h2>📖 專案背景與痛點</h2>
-            <p>本專案源於我在擔任教育志工時的真實觀察。面對數十至百人的活動現場，傳統作業模式存在三大痛點：</p>
-            <ul style="max-width: 800px; margin: 0 auto;">
+            <p style="text-align: center;">面對數十至百人的活動現場，傳統紙本作業存在三大痛點：</p>
+            <ul>
                 <li><strong>現場混亂：</strong> 紙本簽到大排長龍，嚴重影響活動開場體驗。</li>
                 <li><strong>資源浪費：</strong> 每次課程需列印大量簽到表與講義，不環保且保存不易。</li>
-                <li><strong>數據斷層：</strong> 紙本資料難以數位化，導致無法追蹤學員出席率，夥伴難以進行有效的關懷 (CRM) 與課程調整。</li>
+                <li><strong>數據斷層：</strong> 紙本資料難以數位化，導致無法追蹤學員出席率與進行 CRM。</li>
             </ul>
         </div>
     </section>
 
-    <section class="section-full bg-white">
+    <section class="section-content bg-white">
         <div class="container">
             <h2>💡 解決方案與成效</h2>
-            <p style="text-align: center; margin-bottom: 40px;">利用 Gen AI 工具快速構建的前後端分離解決方案，達成以下成效：</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 30px;">
                 <div>
-                    <h3>🌱 1. 實現 100% 無紙化與永續</h3>
+                    <h3>🌱 100% 無紙化</h3>
                     <p>徹底取代紙本作業，不僅響應環保，更大幅降低行政耗材成本。</p>
                 </div>
                 <div>
-                    <h3>🚀 2. 優化學員體驗</h3>
-                    <p>學員透過 QR Code 或手機介面秒速完成報到，解決現場排隊壅塞問題。</p>
+                    <h3>🚀 極速簽到體驗</h3>
+                    <p>學員透過 QR Code 掃描秒速完成報到，解決現場排隊壅塞。</p>
                 </div>
                 <div>
-                    <h3>🤝 3. 數據驅動 CRM</h3>
-                    <p>後台自動統計出席率，讓夥伴能依據數據精準識別需關懷對象，並動態調整課程安排。</p>
+                    <h3>🤝 數據驅動 CRM</h3>
+                    <p>後台自動統計出席率，讓夥伴能依據數據精準識別需關懷對象。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-full bg-grey">
+    <section class="section-content bg-grey">
         <div class="container">
             <h2>🤖 Gen AI 開發實作</h2>
-            <p style="text-align: center;">本專案核心價值在於「AI 賦能開發」，透過與 AI 協作，以極低時間成本解決複雜問題：</p>
-            <ul style="max-width: 800px; margin: 0 auto;">
-                <li><strong>協作工具：</strong> 使用 <strong>Gemini Canvas</strong> 梳理業務邏輯與資料庫架構；使用 <strong>Vibe Code</strong> 輔助生成前端 UI。</li>
-                <li><strong>邏輯生成：</strong> 透過 Prompt Engineering，讓 AI 生成 Google Apps Script (GAS) 複雜的驗證邏輯。</li>
-                <li><strong>隱私設計：</strong> 採用前後端分離架構，確保前端使用者無法直接接觸後端原始資料庫。</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section-full bg-white compact-section">
-        <div class="container">
-            <h2 style="font-size: 1.5rem; margin-bottom: 20px;">🛠️ 技術堆疊</h2>
-            <div class="tech-tags">
-                <span class="tag">HTML5 / CSS3</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Google Apps Script (GAS)</span>
-                <span class="tag">Google Sheets (Database)</span>
-                <span class="tag">Gemini Canvas</span>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                本專案使用 <strong>Gemini Canvas</strong> 梳理業務邏輯，並透過 <strong>Vibe Code</strong> 輔助生成前端 UI。
+                後端採用 Google Apps Script (GAS) 處理複雜驗證，並以前後端分離架構確保資安。
+            </p>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; display: inline-block;">
+                    <strong>🛠️ Tech Stack:</strong> HTML5, CSS3, Google Apps Script, Google Sheets
+                </div>
             </div>
 
-            <div class="privacy-box">
-                <strong>⚠️ 隱私聲明：</strong> 
-                基於個資保護協議，本頁面僅提供系統運作展示。原始程式碼與即時測試連結涉及學員隱私資料，故不在此公開。
+            <div style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: #ef4444;">
+                ⚠️ 隱私聲明：本頁面僅展示系統錄影，不公開原始程式碼與即時資料庫。
             </div>
         </div>
     </section>
 
-    <section class="section-full bg-dark cta-section">
+    <section class="cta-section">
         <div class="container">
             <h2>Ready to create value?</h2>
             <p>Let's discuss how we can integrate strategy and technology.</p>
@@ -309,7 +268,7 @@
     </section>
 
     <footer>
-        &copy; 2026 Rowan Huang.
+        <span class="footer-text">&copy; 2026 Rowan Huang.</span>
     </footer>
 
 </body>
