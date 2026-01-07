@@ -64,12 +64,26 @@
             background-color: var(--accent-yellow); border-radius: 50%; margin-left: -4px;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             text-decoration: none; color: #666; font-size: 0.85rem; margin-left: 20px; font-weight: 500;
         }
 
         .nav-btn {
             background-color: var(--primary-blue); color: white !important; padding: 6px 16px; border-radius: 4px;
+        }
+
+        /* 新增：語言切換按鈕樣式 */
+        .lang-switch {
+            font-weight: 700 !important;
+            color: var(--dark-navy) !important;
+            border: 1px solid #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
         }
 
         /* --- 2. Hero Section (Compact Version) --- */
@@ -133,7 +147,7 @@
 
         /* --- 3. Philosophy Section --- */
         .philosophy-section {
-            padding: 40px 0 60px 0;
+            padding: 40px 0 60px 0; 
             background-color: #fff;
         }
 
@@ -298,6 +312,7 @@
             <div class="nav-links">
                 <a href="#">核心觀點</a>
                 <a href="#projects">精選案例</a>
+                <a href="index-en.html" class="lang-switch">EN</a>
                 <a href="mailto:your-email@example.com" class="nav-btn">聯繫我</a>
             </div>
         </div>
@@ -402,12 +417,12 @@
 
                 <a href="project3.html" class="project-card">
                     <div class="card-image">
-                        <img src="data.jpg" alt="Data Dashboard">
+                        <img src="data.jpg" alt="Interactive Dashboard">
                     </div>
                     <div class="card-content">
                         <div class="card-tag tag-data">DATA VISUALIZATION</div>
-                        <h3 class="card-title">互動式商業智慧儀表板 (Video Demo)</h3>
-                        <p class="card-text">打破數據孤島，整合營運、行銷與財務數據。內建 AI 觀點分析，實現全通路營收監控與決策輔助。</p>
+                        <h3 class="card-title">互動式商業智慧儀表板</h3>
+                        <p class="card-text">打破數據孤島，整合營運、行銷與財務數據。內建 AI 觀點分析，輔助高層快速決策。</p>
                         <div class="card-link-text">查看專案詳情</div>
                     </div>
                 </a>
