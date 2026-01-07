@@ -5,55 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ops Re-engineering & Product Strategy | Portfolio</title>
     <style>
-        :root { --primary-blue: #0ea5e9; --dark-navy: #111827; --text-main: #333333; --text-light: #6b7280; --bg-light: #f9fafb; --white: #ffffff; }
-        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; color: var(--text-main); margin: 0; padding: 0; background-color: var(--white); }
+        :root {
+            --primary-blue: #0ea5e9;
+            --dark-navy: #111827;
+            --text-main: #333333;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --accent-yellow: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+        }
+
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigation */
         .nav-bar { padding: 20px 0; border-bottom: 1px solid #e5e7eb; margin-bottom: 40px; background-color: var(--white); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .back-link { text-decoration: none; color: var(--primary-blue); font-weight: 500; font-size: 1rem; display: inline-flex; align-items: center; transition: opacity 0.2s; }
         .back-link:hover { opacity: 0.8; }
         .back-link::before { content: '←'; margin-right: 8px; }
         .project-meta { color: var(--text-light); font-size: 0.9rem; font-weight: 400; }
+
+        /* Header */
         header { text-align: center; margin-bottom: 40px; }
         .tag-strategy { background-color: transparent; color: var(--primary-blue); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 10px; }
         h1 { font-size: 2.5rem; margin: 0 0 10px 0; color: #111; font-weight: 700; line-height: 1.2; }
         .subtitle { font-size: 1.2rem; color: var(--text-light); font-weight: 400; }
+
+        /* Main Visual */
         .visual-container { width: 100%; max-width: 960px; margin: 0 auto 60px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); background-color: #f0f0f0; }
         .visual-container img { width: 100%; height: auto; display: block; }
-        .section-content { padding: 40px 0; }
+
+        /* Sections */
+        .section-content { padding: 50px 0; }
         .bg-grey { background-color: var(--bg-light); }
         .bg-white { background-color: var(--white); }
+        
         h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 30px; text-align: center; color: #111; }
-        h3 { font-size: 1.25rem; margin-top: 30px; margin-bottom: 10px; color: var(--primary-blue); }
+        h3 { font-size: 1.3rem; margin-top: 0; margin-bottom: 15px; color: var(--primary-blue); }
         p, li { font-size: 1.05rem; color: #4b5563; margin-bottom: 15px; }
         ul { padding-left: 20px; max-width: 800px; margin: 0 auto; }
+
+        /* --- New Section: Image Switcher (SOP & VBA) --- */
+        .switcher-container {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        .switcher-tabs {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f8f9fa;
+        }
+
+        .switch-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.2s;
+        }
+
+        .switch-btn.active {
+            background: #fff;
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+
+        .switch-content {
+            padding: 20px;
+            min-height: 400px; /* 預留高度避免跳動 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+        }
+
+        .switch-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: none; /* 預設隱藏 */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .switch-content img.active {
+            display: block; /* 顯示啟用的圖片 */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CTA */
         .cta-section { background-color: var(--dark-navy); color: var(--white); text-align: center; padding: 80px 20px; }
         .cta-section h2 { color: var(--white); font-size: 2.2rem; margin-bottom: 10px; }
         .cta-section p { color: #94a3b8; margin-bottom: 30px; }
         .cta-button { display: inline-block; background-color: var(--primary-blue); color: var(--white); padding: 14px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background-color 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .cta-button:hover { background-color: #0284c7; }
+
+        /* Footer */
         footer { background-color: var(--dark-navy); color: #64748b; text-align: center; padding-bottom: 40px; font-size: 0.9rem; border-top: none; }
         .footer-text { color: #64748b; }
+
         @media (max-width: 768px) { h1 { font-size: 2rem; } .nav-content { flex-direction: column; gap: 10px; } }
     </style>
 </head>
 <body>
+
     <nav class="nav-bar">
         <div class="container nav-content">
             <a href="index-en.html" class="back-link">Back to Home</a>
             <div class="project-meta">Portfolio | Strategy & Operations</div>
         </div>
     </nav>
+
     <div class="container">
         <header>
             <div class="tag-strategy">STRATEGY & OPERATIONS</div>
             <h1>Omni-Channel Operations Re-engineering & Product Strategy</h1>
             <div class="subtitle">Integrating BPR, automation, and sales design to bridge data gaps and drive dual growth.</div>
         </header>
+
         <div class="visual-container">
-            <img src="strategy.jpg" alt="Strategy Flowchart">
+            <img src="strategy.jpg" alt="Strategy Overview">
         </div>
     </div>
+
     <section class="section-content bg-grey">
         <div class="container">
             <h2>📖 Background & Challenges</h2>
@@ -65,25 +162,59 @@
             </ul>
         </div>
     </section>
+
     <section class="section-content bg-white">
         <div class="container">
-            <h2>💡 Solutions & Impact</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 30px;">
+            <h2>⚙️ Technical Implementation: SOP & VBA</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px auto;">
+                To solve the efficiency bottleneck, I implemented a two-pronged approach: optimizing the process flow (SOP) and automating execution (VBA).
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                 <div>
-                    <h3>⚙️ BPR & Automation</h3>
-                    <p>Redesigned core workflows using Business Process Re-engineering (BPR) and implemented automation tools to reduce manual labor by 40%.</p>
+                    <h3>1. SOP Standardization</h3>
+                    <p>Redefined the Standard Operating Procedures (SOP) to eliminate redundant steps. By mapping out the "As-Is" vs. "To-Be" workflows, we identified critical friction points and established a clear, logical protocol for cross-departmental collaboration.</p>
                 </div>
                 <div>
-                    <h3>📈 Sales Structure Optimization</h3>
-                    <p>Developed structured sales guidance and product bundles, aligning frontline execution with high-level business goals.</p>
+                    <h3>2. VBA Automation</h3>
+                    <p>Developed custom VBA scripts to automate data entry and report generation. This reduced manual processing time by 40% and minimized human error, allowing the team to focus on high-value analysis rather than repetitive tasks.</p>
                 </div>
-                <div>
-                    <h3>🚀 Dual Growth</h3>
-                    <p>Successfully bridged the gap between strategy and operations, resulting in a significant increase in both operational efficiency and revenue.</p>
+            </div>
+
+            <div class="switcher-container">
+                <div class="switcher-tabs">
+                    <button class="switch-btn active" onclick="switchImage('img1', this)">Standardized SOP Flow</button>
+                    <button class="switch-btn" onclick="switchImage('img2', this)">VBA Automation Script</button>
+                </div>
+                <div class="switch-content">
+                    <img id="img1" src="sop.jpg" alt="Standardized SOP Flowchart" class="active">
+                    
+                    <img id="img2" src="vba.jpg" alt="VBA Automation Code Snippet">
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="section-content bg-grey">
+        <div class="container">
+            <h2>🚀 Impact & Results</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 30px; text-align: center;">
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 10px;">40%</h3>
+                    <p>Reduction in Manual Labor</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 10px;">100%</h3>
+                    <p>Data Accuracy</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 10px;">2x</h3>
+                    <p>Efficiency Growth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cta-section">
         <div class="container">
             <h2>Ready to create value?</h2>
@@ -91,8 +222,28 @@
             <a href="mailto:your-email@example.com" class="cta-button">Contact Me</a>
         </div>
     </section>
+
     <footer>
         <span class="footer-text">&copy; 2026 Rowan Huang.</span>
     </footer>
+
+    <script>
+        function switchImage(imgId, btn) {
+            // 1. Hide all images
+            document.querySelectorAll('.switch-content img').forEach(img => {
+                img.classList.remove('active');
+            });
+            // 2. Deactivate all buttons
+            document.querySelectorAll('.switch-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // 3. Show selected image
+            document.getElementById(imgId).classList.add('active');
+            // 4. Activate clicked button
+            btn.classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
