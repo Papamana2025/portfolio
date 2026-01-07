@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互動式儀表板 | Portfolio</title>
+    <style>
+        :root {
+            /* 統一定義顏色變數 (與 Project 1, 2 完全一致) */
+            --primary-blue: #0ea5e9; /* 亮藍色 */
+            --dark-navy: #111827;    /* 深藍底色 */
+            --text-main: #333333;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 1. 頂部導覽列 --- */
+        .nav-bar {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 40px;
+            background-color: var(--white);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 0.8; }
+        .back-link::before { content: '←'; margin-right: 8px; }
+
+        .project-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* --- 2. 標題與標籤 --- */
+        header { text-align: center; margin-bottom: 40px; }
+
+        /* Tag 樣式 (比照 Project 1, 2 內頁風格：無底色藍字) */
+        .tag-data { 
+            background-color: transparent;
+            color: var(--text-light);    /* 數據類通常用深灰色或維持藍色，這裡先設深灰區隔 */
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0;
+            border-radius: 0;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: #111;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* --- 3. 主視覺展示區 (目前先放圖片 placeholder) --- */
+        .visual-container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto 60px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background-color: #f0f0f0;
+            /* 如果是圖片，這裡可以拿掉 aspect-ratio，或設為 auto */
+        }
+
+        .visual-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- 4. 內容區塊 --- */
+        .section-content { padding: 40px 0; }
+        .bg-grey { background-color: var(--bg-light); }
+        .bg-white { background-color: var(--white); }
+
+        h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 30px; text-align: center; color: #111; }
+        h3 { font-size: 1.25rem; margin-top: 30px; margin-bottom: 10px; color: var(--primary-blue); }
+        p, li { font-size: 1.05rem; color: #4b5563; margin-bottom: 15px; }
+        ul { padding-left: 20px; max-width: 800px; margin: 0 auto; }
+
+        /* --- 5. 底部 CTA (完全一致) --- */
+        .cta-section {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-section p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 14px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover { background-color: #0284c7; }
+
+        /* 頁尾版權 */
+        footer {
+            background-color: var(--dark-navy);
+            color: #64748b;
+            text-align: center;
+            padding-bottom: 40px;
+            font-size: 0.9rem;
+            border-top: none;
+        }
+        
+        .footer-text { color: #64748b; }
+
+        /* RWD */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .nav-content { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a href="index.html" class="back-link">返回首頁</a>
+            <div class="project-meta">Portfolio | 互動式商業智慧儀表板</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="tag-data">DATA VISUALIZATION</div>
+            <h1>互動式商業智慧儀表板</h1>
+            <div class="subtitle">將數據轉化為決策引擎，實現營運透明化</div>
+        </header>
+
+        <div class="visual-container">
+            <img src="data.jpg" alt="Interactive Dashboard Main Visual">
+        </div>
+    </div>
+
+    <section class="section-content bg-grey">
+        <div class="container">
+            <h2>📖 專案背景與痛點 (待填寫)</h2>
+            <p style="text-align: center;">(這裡請填寫：為什麼要做這個儀表板？原本看數據有多麻煩？)</p>
+            <ul>
+                <li><strong>痛點一：</strong> 數據分散在不同平台，彙整耗時。</li>
+                <li><strong>痛點二：</strong> 報表更新延遲，無法即時反應市場變化。</li>
+                <li><strong>痛點三：</strong> 缺乏可視化工具，難以一眼看出趨勢。</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section-content bg-white">
+        <div class="container">
+            <h2>💡 解決方案與成效 (待填寫)</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 30px;">
+                <div>
+                    <h3>📊 數據整合 (ETL)</h3>
+                    <p>自動串接多方資料源，減少 90% 人工整理時間。</p>
+                </div>
+                <div>
+                    <h3>⚡ 即時監控</h3>
+                    <p>關鍵指標 (KPI) 即時更新，異常狀況自動預警。</p>
+                </div>
+                <div>
+                    <h3>🧠 輔助決策</h3>
+                    <p>透過互動式圖表切換維度，快速挖掘營收成長點。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-content bg-grey">
+        <div class="container">
+            <h2>🛠️ 技術與工具</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                本專案採用現代化 BI 工具與數據處理流程。
+            </p>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; display: inline-block;">
+                    <strong>Tech Stack:</strong> SQL, Python (Pandas), Tableau / PowerBI, Excel
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to create value?</h2>
+            <p>Let's discuss how we can integrate strategy and technology.</p>
+            <a href="mailto:your-email@example.com" class="cta-button">Contact Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-text">&copy; 2026 Rowan Huang.</span>
+    </footer>
+
+</body>
+</html>
