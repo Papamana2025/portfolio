@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>互動式儀表板 | Portfolio</title>
+    <title>互動式商業智慧儀表板 | Portfolio</title>
     <style>
         :root {
-            /* 統一定義顏色變數 (與 Project 1, 2 完全一致) */
+            /* 統一定義顏色變數 (與 Project 1, 2 一致) */
             --primary-blue: #0ea5e9; /* 亮藍色 */
             --dark-navy: #111827;    /* 深藍底色 */
             --text-main: #333333;
@@ -67,10 +67,10 @@
         /* --- 2. 標題與標籤 --- */
         header { text-align: center; margin-bottom: 40px; }
 
-        /* Tag 樣式 (比照 Project 1, 2 內頁風格：無底色藍字) */
+        /* Tag 樣式：比照 Project 1, 2 風格 (無底色深灰字) */
         .tag-data { 
             background-color: transparent;
-            color: var(--text-light);    /* 數據類通常用深灰色或維持藍色，這裡先設深灰區隔 */
+            color: var(--text-light); /* 數據類使用質感深灰 */
             font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -94,22 +94,23 @@
             font-weight: 400;
         }
 
-        /* --- 3. 主視覺展示區 (目前先放圖片 placeholder) --- */
-        .visual-container {
+        /* --- 3. 影片區塊 --- */
+        .video-container {
             width: 100%;
             max-width: 960px;
             margin: 0 auto 60px auto;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background-color: #f0f0f0;
-            /* 如果是圖片，這裡可以拿掉 aspect-ratio，或設為 auto */
+            background-color: #000;
+            aspect-ratio: 16/9; /* 強制 16:9 寬螢幕比例 */
         }
 
-        .visual-container img {
+        video {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
+            object-fit: contain; /* 確保內容完整顯示 */
         }
 
         /* --- 4. 內容區塊 --- */
@@ -122,7 +123,7 @@
         p, li { font-size: 1.05rem; color: #4b5563; margin-bottom: 15px; }
         ul { padding-left: 20px; max-width: 800px; margin: 0 auto; }
 
-        /* --- 5. 底部 CTA (完全一致) --- */
+        /* --- 5. 底部 CTA --- */
         .cta-section {
             background-color: var(--dark-navy);
             color: var(--white);
@@ -188,41 +189,46 @@
         <header>
             <div class="tag-data">DATA VISUALIZATION</div>
             <h1>互動式商業智慧儀表板</h1>
-            <div class="subtitle">將數據轉化為決策引擎，實現營運透明化</div>
+            <div class="subtitle">打破數據孤島 | 整合營運、行銷與財務的決策中樞</div>
         </header>
 
-        <div class="visual-container">
-            <img src="data.jpg" alt="Interactive Dashboard Main Visual">
+        <div class="video-container">
+            <video controls autoplay muted loop playsinline>
+                <source src="project3-demo.mp4" type="video/mp4">
+                您的瀏覽器不支援影片播放，請下載影片觀看。
+            </video>
         </div>
     </div>
 
     <section class="section-content bg-grey">
         <div class="container">
-            <h2>📖 專案背景與痛點 (待填寫)</h2>
-            <p style="text-align: center;">(這裡請填寫：為什麼要做這個儀表板？原本看數據有多麻煩？)</p>
+            <h2>📖 專案背景與痛點</h2>
+            <p style="text-align: center;">中小企業在數位轉型過程中，常面臨「數據有，但看不懂」的困境：</p>
             <ul>
-                <li><strong>痛點一：</strong> 數據分散在不同平台，彙整耗時。</li>
-                <li><strong>痛點二：</strong> 報表更新延遲，無法即時反應市場變化。</li>
-                <li><strong>痛點三：</strong> 缺乏可視化工具，難以一眼看出趨勢。</li>
+                <li><strong>數據孤島 (Data Silos)：</strong> 銷售、行銷與運營數據分散在不同系統，缺乏統一視圖。</li>
+                <li><strong>指標脫節 (Strategic Disconnect)：</strong> 儀表板往往淪為單一部門的數字堆砌，無法對接公司整體策略。</li>
+                <li><strong>缺乏財務連動：</strong> 業務端看不見 ROI，財務端看不懂轉換率，導致決策缺乏全盤考量。</li>
             </ul>
         </div>
     </section>
 
     <section class="section-content bg-white">
         <div class="container">
-            <h2>💡 解決方案與成效 (待填寫)</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 30px;">
+            <h2>💡 解決方案與洞察</h2>
+            <p style="text-align: center; margin-bottom: 40px;">結合 Gemini Canvas 快速原型開發，打造跨部門整合戰情室：</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
                 <div>
-                    <h3>📊 數據整合 (ETL)</h3>
-                    <p>自動串接多方資料源，減少 90% 人工整理時間。</p>
+                    <h3>🔄 跨單位數據整合</h3>
+                    <p>打破部門藩籬，將經銷、門市與電商數據統一彙整，實現全通路 (Omni-channel) 營收監控。</p>
                 </div>
                 <div>
-                    <h3>⚡ 即時監控</h3>
-                    <p>關鍵指標 (KPI) 即時更新，異常狀況自動預警。</p>
+                    <h3>💰 財務三表視角</h3>
+                    <p>不僅看營收 (Top-line)，更結合成本與 ROI 分析，讓業務決策直接連結到財務績效。</p>
                 </div>
                 <div>
-                    <h3>🧠 輔助決策</h3>
-                    <p>透過互動式圖表切換維度，快速挖掘營收成長點。</p>
+                    <h3>🤖 AI 輔助洞察</h3>
+                    <p>內建「AI 觀點」分析模組，自動解讀趨勢並標示異常，輔助管理者快速判讀市場訊號。</p>
                 </div>
             </div>
         </div>
@@ -230,14 +236,15 @@
 
     <section class="section-content bg-grey">
         <div class="container">
-            <h2>🛠️ 技術與工具</h2>
+            <h2>🤖 Gen AI 開發實作</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-                本專案採用現代化 BI 工具與數據處理流程。
+                本專案利用 <strong>Gemini Canvas</strong> 與 <strong>Vibe Code</strong> 進行協作開發。
+                透過 AI 快速生成資料視覺化邏輯與互動介面，大幅縮短了從「需求發想」到「可操作原型」的開發週期，展現了 AI 賦能商業分析的潛力。
             </p>
             
             <div style="text-align: center; margin-top: 40px;">
                 <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; display: inline-block;">
-                    <strong>Tech Stack:</strong> SQL, Python (Pandas), Tableau / PowerBI, Excel
+                    <strong>🛠️ Tech Stack:</strong> Gemini Canvas, Vibe Code, Data Visualization, Business Intelligence (BI) Logic
                 </div>
             </div>
         </div>
