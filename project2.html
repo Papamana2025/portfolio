@@ -6,9 +6,9 @@
     <title>課程報到與學員管理系統 | Portfolio</title>
     <style>
         :root {
-            /* 統一定義顏色變數，確保與 Project 1 一致 */
-            --primary-blue: #0ea5e9; /* 作品1 的亮藍色 */
-            --dark-navy: #111827;    /* 作品1 的深藍底色 */
+            /* 統一定義顏色變數 */
+            --primary-blue: #0ea5e9; /* 亮藍色 */
+            --dark-navy: #111827;    /* 深藍底色 */
             --text-main: #333333;
             --text-light: #6b7280;
             --bg-light: #f9fafb;
@@ -31,7 +31,7 @@
             padding: 0 20px;
         }
 
-        /* --- 1. 頂部導覽列 (與 Project 1 統一) --- */
+        /* --- 1. 頂部導覽列 --- */
         .nav-bar {
             padding: 20px 0;
             border-bottom: 1px solid #e5e7eb;
@@ -41,13 +41,13 @@
 
         .nav-content {
             display: flex;
-            justify-content: space-between; /* 左右對齊 */
+            justify-content: space-between;
             align-items: center;
         }
 
         .back-link {
             text-decoration: none;
-            color: var(--primary-blue); /* 藍色連結 */
+            color: var(--primary-blue);
             font-weight: 500;
             font-size: 1rem;
             display: inline-flex;
@@ -64,28 +64,21 @@
             font-weight: 400;
         }
 
-        /* --- 內容區塊 --- */
-        .section-content {
-            padding: 40px 0;
-        }
-
-        .bg-grey { background-color: var(--bg-light); }
-        .bg-white { background-color: var(--white); }
-
-        /* 標題與標籤 */
+        /* --- 2. 標題與標籤 (重點修正區) --- */
         header { text-align: center; margin-bottom: 40px; }
 
+        /* ✅ 修正：AI Tag 樣式比照 Project 1 (文字風格) */
         .tag-ai { 
-            background-color: #fef9c3; 
-            color: #ca8a04; 
-            font-size: 0.85rem;
+            background-color: transparent; /* 移除背景色 */
+            color: var(--primary-blue);    /* 改為藍色文字 */
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 6px 12px;
-            border-radius: 4px;
+            letter-spacing: 2px;           /* 增加字距，營造高級感 */
+            padding: 0;                    /* 移除內距 */
+            border-radius: 0;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         h1 {
@@ -101,7 +94,7 @@
             font-weight: 400;
         }
 
-        /* --- 影片區塊 (修復播放問題) --- */
+        /* --- 3. 影片區塊 --- */
         .video-container {
             width: 100%;
             max-width: 960px;
@@ -110,7 +103,7 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             background-color: #000;
-            aspect-ratio: 16/9; /* 強制固定比例 */
+            aspect-ratio: 16/9;
         }
 
         video {
@@ -120,34 +113,38 @@
             object-fit: contain;
         }
 
-        /* 內文樣式 */
+        /* --- 4. 內容區塊 --- */
+        .section-content { padding: 40px 0; }
+        .bg-grey { background-color: var(--bg-light); }
+        .bg-white { background-color: var(--white); }
+
         h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 30px; text-align: center; color: #111; }
         h3 { font-size: 1.25rem; margin-top: 30px; margin-bottom: 10px; color: var(--primary-blue); }
         p, li { font-size: 1.05rem; color: #4b5563; margin-bottom: 15px; }
         ul { padding-left: 20px; max-width: 800px; margin: 0 auto; }
 
-        /* --- 底部 CTA 區塊 (完全複製 Project 1 樣式) --- */
+        /* --- 5. 底部 CTA --- */
         .cta-section {
-            background-color: var(--dark-navy); /* 深藍底色 */
+            background-color: var(--dark-navy);
             color: var(--white);
             text-align: center;
             padding: 80px 20px;
         }
 
         .cta-section h2 {
-            color: var(--white); /* 覆寫 h2 顏色為白色 */
+            color: var(--white);
             font-size: 2.2rem;
             margin-bottom: 10px;
         }
 
         .cta-section p {
-            color: #94a3b8; /* 淺灰文字 */
+            color: #94a3b8;
             margin-bottom: 30px;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--primary-blue); /* 藍色按鈕 */
+            background-color: var(--primary-blue);
             color: var(--white);
             padding: 14px 40px;
             border-radius: 50px;
@@ -158,23 +155,19 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .cta-button:hover {
-            background-color: #0284c7; /* 深一點的藍色 */
-        }
+        .cta-button:hover { background-color: #0284c7; }
 
         /* 頁尾版權 */
         footer {
             background-color: var(--dark-navy);
-            color: #4b5563;
+            color: #64748b;
             text-align: center;
             padding-bottom: 40px;
             font-size: 0.9rem;
-            border-top: none; /* 移除分隔線，與 CTA 融合 */
+            border-top: none;
         }
         
-        .footer-text {
-            color: #64748b;
-        }
+        .footer-text { color: #64748b; }
 
         /* RWD */
         @media (max-width: 768px) {
