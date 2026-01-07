@@ -3,112 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Portfolio - Business Strategy & Integration</title>
+    <title>Rowan Huang - Strategy & Integration Portfolio</title>
     <style>
         :root {
-            --primary-blue: #0ea5e9;
-            --dark-navy: #111827;
+            --primary-blue: #0ea5e9; /* 亮藍色 */
+            --dark-navy: #111827;    /* 深藍色 */
             --text-main: #333;
             --text-light: #666;
-            --bg-light: #f8f9fa; /* 淺灰背景，創造層次感 */
+            --bg-light: #f9fafb;     /* 淺灰背景 */
             --white: #ffffff;
+            --accent-yellow: #f59e0b; /* 裝飾黃線 */
         }
 
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-main);
-            background-color: var(--bg-light); /* 設定全站背景為淺灰 */
             margin: 0;
             padding: 0;
-        }
-
-        /* --- Header (層次 1) --- */
-        header {
             background-color: var(--white);
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-            color: #111;
-            letter-spacing: -1px;
-        }
-
-        header p {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            margin-top: 15px;
-            font-weight: 300;
-        }
-
-        /* --- Main Content (層次 2) --- */
+        /* --- Global Layout Helpers --- */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 0 20px;
         }
 
-        .section-title {
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* --- 1. Top Navigation --- */
+        nav {
+            padding: 20px 0;
+            background: #fff;
+        }
+        
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+        }
+
+        .logo::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-yellow);
+            border-radius: 50%;
+            margin-left: -4px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.85rem;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        .nav-btn {
+            background-color: var(--primary-blue);
+            color: white !important;
+            padding: 6px 16px;
+            border-radius: 4px;
+        }
+
+        /* --- 2. Hero Section (Layer 1) --- */
+        .hero-section {
             text-align: center;
-            margin-bottom: 50px;
+            padding: 100px 0 80px 0;
+            background: radial-gradient(circle at top right, #f0f9ff 0%, #fff 40%);
         }
 
-        .section-title h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
             color: #111;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
-        .section-title p {
-            color: var(--text-light);
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #2c5282;
+            margin-bottom: 40px;
+            font-weight: 400;
         }
 
-        /* Projects Grid */
-        .projects-grid {
+        .hero-quote {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            border-left: 4px solid var(--accent-yellow);
+            padding-left: 20px;
+            text-align: left;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #2b6cb0; /* 深一點的藍色按鈕 */
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .meta-tag {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* --- 3. Philosophy Section (Layer 2) --- */
+        .philosophy-section {
+            background-color: #fff;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .sub-label {
+            color: #2b6cb0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-heading {
+            font-size: 1.8rem;
+            color: #111;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-yellow);
+            margin: 15px auto 0 auto;
+        }
+
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
 
-        /* Project Card Styling */
+        .feature-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-left-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .highlight { color: #d97706; font-weight: 600; font-size: 0.8rem; display: block; margin-bottom: 5px; }
+
+        /* --- 4. Projects Section (Layer 3) --- */
+        .projects-section {
+            background-color: #f8f9fa; /* 灰色背景，區隔層次 */
+        }
+
+        /* 這裡保留我們修好的 Project Card 樣式 */
         .project-card {
-            background: var(--white); /* 白色卡片 */
+            background: var(--white);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06); /* 卡片陰影 */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
             display: flex;
             flex-direction: column;
-            text-decoration: none; /* 移除連結下底線 */
-            color: inherit;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        /* 圖片區塊設定 */
         .card-image {
-            width: 100%;
-            height: 220px; /* 固定高度 */
+            height: 200px;
+            background: #eee;
             overflow: hidden;
-            background-color: #f0f0f0;
-            position: relative;
         }
 
         .card-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 自動填滿裁切 */
-            display: block;
-            transition: transform 0.5s ease;
+            object-fit: cover;
+            transition: transform 0.5s;
         }
 
         .project-card:hover .card-image img {
@@ -116,165 +264,165 @@
         }
 
         .card-content {
-            padding: 30px;
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
-        /* Tags */
         .card-tag {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            display: inline-block;
-            padding: 6px 10px;
+            margin-bottom: 10px;
+            padding: 4px 8px;
             border-radius: 4px;
+            display: inline-block;
         }
 
-        .tag-strategy { background-color: #e0f2fe; color: #0284c7; }
-        .tag-ai { background-color: #fef9c3; color: #ca8a04; }
-        .tag-data { background-color: #f3f4f6; color: #4b5563; }
+        .tag-strategy { background: #e0f2fe; color: #0284c7; }
+        .tag-ai { background: #fef9c3; color: #ca8a04; }
+        .tag-data { background: #f3f4f6; color: #4b5563; }
 
-        .card-content h3 {
-            margin: 0 0 15px 0;
-            font-size: 1.4rem;
+        .card-title {
+            font-size: 1.2rem;
+            margin: 0 0 10px 0;
             color: #111;
-            line-height: 1.3;
         }
 
-        .card-content p {
-            font-size: 1rem;
+        .card-text {
+            font-size: 0.9rem;
             color: #666;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
-        .card-link {
+        .card-link-text {
             color: var(--primary-blue);
+            font-size: 0.85rem;
             font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
+            display: flex;
             align-items: center;
         }
+        .card-link-text::after { content: '→'; margin-left: 5px; transition: margin-left 0.2s; }
+        .project-card:hover .card-link-text::after { margin-left: 10px; }
 
-        .card-link::after {
-            content: '→';
-            margin-left: 6px;
-            transition: margin-left 0.2s;
-        }
-
-        .project-card:hover .card-link::after {
-            margin-left: 10px;
-        }
-
-        /* --- Footer (層次 3) --- */
-        /* 這裡加上了你要求的 CTA 區塊，維持一致性 */
-        .cta-section {
-            background-color: var(--dark-navy);
-            color: var(--white);
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--white);
-        }
-
-        .cta-section p {
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 12px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-
-        .cta-button:hover { background-color: #0284c7; }
-
+        /* --- Footer --- */
         footer {
             background-color: var(--dark-navy);
-            color: #64748b;
+            color: #94a3b8;
             text-align: center;
-            padding-bottom: 40px;
-            font-size: 0.9rem;
+            padding: 40px 0;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>portfolio</h1>
-        <p>My Professional Portfolio - Business Strategy & Integration</p>
-    </header>
-
-    <div class="container">
-        <div class="section-title">
-            <h2>精選案例</h2>
-            <p>從策略整合到開發實踐的完整軌跡</p>
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">ROWAN HUANG</div>
+            <div class="nav-links">
+                <a href="#">核心觀點</a>
+                <a href="#">精選案例</a>
+                <a href="mailto:your-email@example.com" class="nav-btn">聯繫我</a>
+            </div>
         </div>
+    </nav>
 
-        <div class="projects-grid">
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Bridging Data & Real-World Application</h1>
+            <h2 class="hero-subtitle">不只是策略規劃，更具備落地執行的技術力。</h2>
             
-            <a href="project1.html" class="project-card">
-                <div class="card-image">
-                    <img src="strategy.jpg" alt="Business Strategy">
-                </div>
-                <div class="card-content">
-                    <div class="card-tag tag-strategy">STRATEGY & OPERATIONS</div>
-                    <h3>市場營運流程再造與產品策略</h3>
-                    <p>涵蓋 BPR 流程自動化、銷售引導設計與數據洞察。解決部門數據脫節，推動營收與效率雙成長。</p>
-                    <span class="card-link">查看完整案例</span>
-                </div>
-            </a>
-
-            <a href="project2.html" class="project-card">
-                <div class="card-image">
-                    <img src="coding.jpg" alt="AI Development" style="object-position: bottom;">
-                </div>
-                <div class="card-content">
-                    <div class="card-tag tag-ai">AI DEVELOPMENT</div>
-                    <h3>課程報到系統 (Video Demo)</h3>
-                    <p>使用 Gemini Canvas 與 Vibe Code 協作開發。解決現場活動報到混亂痛點，實現快速檢索與即時反饋。</p>
-                    <span class="card-link">查看專案詳情</span>
-                </div>
-            </a>
-
-            <div class="project-card" style="cursor: default;">
-                <div class="card-image">
-                    <img src="data.jpg" alt="Data Dashboard">
-                </div>
-                <div class="card-content">
-                    <div class="card-tag tag-data">DATA VISUALIZATION</div>
-                    <h3>互動式儀表板 (Coming Soon)</h3>
-                    <p>將數據轉化為決策引擎。目前正在整合中。</p>
-                    <span style="color: #999; font-size: 0.9rem;">即將上線</span>
-                </div>
+            <div class="hero-quote">
+                <strong>以營運策略與系統整合為核心，結合商控與數據分析。</strong><br>
+                專注於電商營運流程優化與商品結構梳理，推動營收與效率雙效成長。
             </div>
 
+            <a href="#projects" class="hero-btn">查看精選案例</a>
+            <div class="meta-tag">Business Strategy × Technical Execution</div>
         </div>
-    </div>
+    </header>
 
-    <section class="cta-section">
-        <h2>Ready to create value?</h2>
-        <p>Let's discuss how we can integrate strategy and technology.</p>
-        <a href="mailto:your-email@example.com" class="cta-button">Contact Me</a>
+    <section class="section-padding philosophy-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-label">MY PHILOSOPHY</span>
+                <div class="section-heading">縱向深耕策略 · 橫向整合價值</div>
+            </div>
+
+            <div class="grid-3">
+                <div class="feature-card">
+                    <span class="highlight">WHY (理解痛點)</span>
+                    <div class="feature-title">Integration</div>
+                    <div class="feature-desc">單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，洞察內耗。</div>
+                </div>
+                <div class="feature-card">
+                    <span class="highlight">WHY (理解思維)</span>
+                    <div class="feature-title">Product</div>
+                    <div class="feature-desc">產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。</div>
+                </div>
+                <div class="feature-card">
+                    <span class="highlight">WHY (發掘光點)</span>
+                    <div class="feature-title">Data</div>
+                    <div class="feature-desc">當營收停滯，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding projects-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-heading">精選案例</div>
+                <div style="color:#666; margin-top:10px; font-size:0.9rem;">從策略整合到開發實踐的完整軌跡</div>
+            </div>
+
+            <div class="grid-3">
+                
+                <a href="project1.html" class="project-card">
+                    <div class="card-image">
+                        <img src="strategy.jpg" alt="Strategy">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag tag-strategy">STRATEGY & OPERATIONS</div>
+                        <h3 class="card-title">市場營運流程再造與產品策略</h3>
+                        <p class="card-text">涵蓋 BPR 流程自動化、銷售引導設計與數據洞察。解決部門數據脫節，推動營收與效率雙成長。</p>
+                        <div class="card-link-text">查看完整案例</div>
+                    </div>
+                </a>
+
+                <a href="project2.html" class="project-card">
+                    <div class="card-image">
+                        <img src="coding.jpg" alt="AI Development" style="object-position: bottom;">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag tag-ai">AI DEVELOPMENT</div>
+                        <h3 class="card-title">課程報到系統 (Video Demo)</h3>
+                        <p class="card-text">使用 Gemini Canvas 與 Vibe Code 協作開發。解決現場活動報到混亂痛點，實現快速檢索與即時反饋。</p>
+                        <div class="card-link-text">查看專案詳情</div>
+                    </div>
+                </a>
+
+                <div class="project-card" style="cursor: default;">
+                    <div class="card-image">
+                        <img src="data.jpg" alt="Data Dashboard">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag tag-data">DATA VISUALIZATION</div>
+                        <h3 class="card-title">互動式儀表板 (Coming Soon)</h3>
+                        <p class="card-text">將數據轉化為決策引擎。目前正在整合中。</p>
+                        <div style="color:#999; font-size:0.85rem;">即將上線</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </section>
 
     <footer>
-        &copy; 2026 Rowan Huang.
+        &copy; 2026 Rowan Huang. All rights reserved.
     </footer>
 
 </body>
