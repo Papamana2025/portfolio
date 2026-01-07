@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rowan Huang - Strategy & Integration Portfolio</title>
+    <style>
+        :root {
+            --primary-blue: #0ea5e9;
+            --dark-navy: #111827;
+            --text-main: #333;
+            --text-light: #666;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --accent-yellow: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+        }
+
+        /* --- Global Layout Helpers --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 1. Top Navigation --- */
+        nav {
+            padding: 15px 0;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: ''; display: inline-block; width: 8px; height: 8px;
+            background-color: var(--primary-blue); border-radius: 50%;
+        }
+        .logo::after {
+            content: ''; display: inline-block; width: 8px; height: 8px;
+            background-color: var(--accent-yellow); border-radius: 50%; margin-left: -4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none; color: #666; font-size: 0.85rem; margin-left: 20px; font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary-blue); }
+
+        .nav-btn {
+            background-color: var(--primary-blue); color: white !important; padding: 6px 16px; border-radius: 4px;
+        }
+
+        /* Language Switcher Style */
+        .lang-switch {
+            font-weight: 700 !important;
+            color: var(--dark-navy) !important;
+            border: 1px solid #eee;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        /* --- 2. Hero Section (Compact Version) --- */
+        .hero-section {
+            text-align: center;
+            padding: 50px 0 40px 0;
+            background: radial-gradient(circle at top right, #f0f9ff 0%, #fff 40%);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #2c5282;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero-quote {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            border-left: 4px solid var(--accent-yellow);
+            padding-left: 20px;
+            text-align: left;
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .hero-btn {
+            font-size: 1rem;
+            display: inline-block;
+            background-color: #2b6cb0;
+            color: white;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .hero-btn:hover { transform: translateY(-2px); }
+
+        .meta-tag {
+            font-size: 0.8rem;
+            color: #999;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 3. Philosophy Section --- */
+        .philosophy-section {
+            padding: 40px 0 60px 0; 
+            background-color: #fff;
+        }
+
+        .philosophy-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .philo-heading {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 5px;
+        }
+
+        .philo-sub {
+            color: #2b6cb0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .philo-sub::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-yellow);
+        }
+
+        .philo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .philo-card {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .philo-card:hover {
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+        }
+
+        .philo-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .philo-block { margin-bottom: 15px; }
+
+        .philo-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .label-why { color: #2563eb; }
+        .label-how { color: #d97706; }
+
+        .philo-text {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* --- 4. Projects Section --- */
+        .projects-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .projects-header h2 { font-size: 1.8rem; margin-bottom: 5px; color: #111; }
+        .projects-header p { color: #666; font-size: 1rem; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        .card-image {
+            height: 200px;
+            background: #eee;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
+        }
+        .project-card:hover .card-image img { transform: scale(1.05); }
+
+        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+
+        .card-tag {
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px;
+            padding: 4px 8px; border-radius: 4px; display: inline-block;
+        }
+        .tag-strategy { background: #e0f2fe; color: #0284c7; }
+        .tag-ai { background: #fef9c3; color: #ca8a04; }
+        .tag-data { background: #f3f4f6; color: #4b5563; }
+
+        .card-title { font-size: 1.25rem; margin: 0 0 10px 0; color: #111; }
+        .card-text { font-size: 0.95rem; color: #666; margin-bottom: 20px; flex-grow: 1; }
+
+        .card-link-text {
+            color: var(--primary-blue); font-size: 0.9rem; font-weight: 600;
+            display: flex; align-items: center;
+        }
+        .card-link-text::after { content: '→'; margin-left: 5px; transition: margin-left 0.2s; }
+        .project-card:hover .card-link-text::after { margin-left: 10px; }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-navy); color: #94a3b8;
+            text-align: center; padding: 40px 0; font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">ROWAN HUANG</div>
+            <div class="nav-links">
+                <a href="#philosophy">Philosophy</a>
+                <a href="#projects">Projects</a>
+                <a href="index.html" class="lang-switch">繁體中文</a>
+                <a href="mailto:your-email@example.com" class="nav-btn">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Bridging Data & Real-World Application</h1>
+            <h2 class="hero-subtitle">Not just strategic planning, but technical execution.</h2>
+            
+            <div class="hero-quote">
+                <strong>Core focus on operations strategy and system integration, combined with business control and data analytics.</strong><br>
+                Specializing in optimizing e-commerce workflows and restructuring product frameworks to drive dual growth in revenue and efficiency.
+            </div>
+
+            <a href="#projects" class="hero-btn">View Selected Projects</a>
+            <div class="meta-tag">Business Strategy × Technical Execution</div>
+        </div>
+    </header>
+
+    <section id="philosophy" class="philosophy-section">
+        <div class="container">
+            <div class="philosophy-header">
+                <div class="philo-heading">Vertical Strategy · Horizontal Integration</div>
+                <div class="philo-sub">MY PHILOSOPHY</div>
+            </div>
+
+            <div class="philo-grid">
+                
+                <div class="philo-card">
+                    <div class="philo-title">Integration</div>
+                    <div class="philo-block">
+                        <span class="philo-label label-why">WHY (The Pain Point)</span>
+                        <div class="philo-text">Isolated optimizations cannot solve systemic issues. We must break information silos to let data flow and reveal internal friction.</div>
+                    </div>
+                    <div class="philo-block">
+                        <span class="philo-label label-how">HOW (The Execution)</span>
+                        <div class="philo-text">Using workflow automation to bridge gaps, establishing standardized processes that make systems serve people.</div>
+                    </div>
+                </div>
+
+                <div class="philo-card">
+                    <div class="philo-title">Product</div>
+                    <div class="philo-block">
+                        <span class="philo-label label-why">WHY (The Value)</span>
+                        <div class="philo-text">Value isn't about feature count, but solving real problems. Human-centric design creates true resonance.</div>
+                    </div>
+                    <div class="philo-block">
+                        <span class="philo-label label-how">HOW (The Strategy)</span>
+                        <div class="philo-text">Starting from the user journey, leveraging MVP feedback loops, and using technology to realize creativity.</div>
+                    </div>
+                </div>
+
+                <div class="philo-card">
+                    <div class="philo-title">Data</div>
+                    <div class="philo-block">
+                        <span class="philo-label label-why">WHY (The Objectivity)</span>
+                        <div class="philo-text">Intuition has bias; data does not. Finding objective decision anchors amidst chaotic market signals.</div>
+                    </div>
+                    <div class="philo-block">
+                        <span class="philo-label label-how">HOW (The Insight)</span>
+                        <div class="philo-text">Transforming cold numbers into visual insights, monitoring key metrics (KPIs) for real-time course correction.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="projects-header">
+                <h2>Selected Projects</h2>
+                <p>A complete track record from strategy to development.</p>
+            </div>
+
+            <div class="projects-grid">
+                
+                <a href="project1.html" class="project-card">
+                    <div class="card-image">
+                        <img src="strategy.jpg" alt="Strategy">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag tag-strategy">STRATEGY & OPERATIONS</div>
+                        <h3 class="card-title">Ops Process Re-engineering & Product Strategy</h3>
+                        <p class="card-text">Covering BPR automation, sales guidance design, and data insights. Solving data disconnects to drive revenue and efficiency.</p>
+                        <div class="card-link-text">View Case Study</div>
+                    </div>
+                </a>
+
+                <a href="project2.html" class="project-card">
+                    <div class="card-image">
+                        <img src="coding.jpg" alt="AI Development" style="object-position: bottom;">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag tag-ai">AI DEVELOPMENT</div>
+                        <h3 class="card-title">Smart Course Check-in System</h3>
+                        <p class="card-text">Developed with Gemini Canvas & Vibe Code. Solving event chaos with fast retrieval and real-time feedback.</p>
+                        <div class="card-link-text">View Demo</div>
+                    </div>
+                </a>
+
+                <a href="project3.html" class="project-card">
+                    <div class="card-image">
+                        <img src="data.jpg" alt="Interactive Dashboard">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag tag-data">DATA VISUALIZATION</div>
+                        <h3 class="card-title">Interactive BI Dashboard</h3>
+                        <p class="card-text">Breaking data silos by integrating Ops, Marketing, and Finance. Built-in AI insights for rapid executive decision-making.</p>
+                        <div class="card-link-text">View Details</div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Rowan Huang. All rights reserved.
+    </footer>
+
+</body>
+</html>v
