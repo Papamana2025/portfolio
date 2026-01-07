@@ -6,18 +6,18 @@
     <title>Rowan Huang - Strategy & Integration Portfolio</title>
     <style>
         :root {
-            --primary-blue: #0ea5e9; /* 亮藍色 */
-            --dark-navy: #111827;    /* 深藍色 */
+            --primary-blue: #0ea5e9;
+            --dark-navy: #111827;
             --text-main: #333;
             --text-light: #666;
-            --bg-light: #f9fafb;     /* 淺灰背景 */
+            --bg-light: #f9fafb;
             --white: #ffffff;
-            --accent-yellow: #f59e0b; /* 裝飾黃線 */
+            --accent-yellow: #f59e0b;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.5; /* 稍微縮小行距讓版面更緊湊 */
             color: var(--text-main);
             margin: 0;
             padding: 0;
@@ -33,7 +33,7 @@
 
         /* --- 1. Top Navigation --- */
         nav {
-            padding: 20px 0;
+            padding: 15px 0; /* 縮小導覽列高度 */
             background: #fff;
             border-bottom: 1px solid #eee;
         }
@@ -48,7 +48,7 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.9rem; /* Level 4 */
             color: #333;
             display: flex;
             align-items: center;
@@ -56,147 +56,140 @@
         }
 
         .logo::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary-blue);
-            border-radius: 50%;
+            content: ''; display: inline-block; width: 8px; height: 8px;
+            background-color: var(--primary-blue); border-radius: 50%;
         }
-
         .logo::after {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-yellow);
-            border-radius: 50%;
-            margin-left: -4px;
+            content: ''; display: inline-block; width: 8px; height: 8px;
+            background-color: var(--accent-yellow); border-radius: 50%; margin-left: -4px;
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: #666;
-            font-size: 0.85rem;
-            margin-left: 20px;
-            font-weight: 500;
+            text-decoration: none; color: #666; font-size: 0.85rem; margin-left: 20px; font-weight: 500;
         }
 
         .nav-btn {
-            background-color: var(--primary-blue);
-            color: white !important;
-            padding: 6px 16px;
-            border-radius: 4px;
+            background-color: var(--primary-blue); color: white !important; padding: 6px 16px; border-radius: 4px;
         }
 
-        /* --- 2. Hero Section (Layer 1) --- */
+        /* --- 2. Hero Section (Compact Version) --- */
         .hero-section {
             text-align: center;
-            padding: 100px 0 80px 0;
+            /* 1. 藍框空白高度壓縮：上方 50px, 下方 40px */
+            padding: 50px 0 40px 0;
             background: radial-gradient(circle at top right, #f0f9ff 0%, #fff 40%);
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .hero-title {
-            font-size: 3rem;
+            /* Level 1: Biggest */
+            font-size: 2.5rem;
             font-weight: 800;
             color: #111;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             letter-spacing: -0.5px;
+            line-height: 1.2;
         }
 
         .hero-subtitle {
+            /* Level 2: Sub-header */
             font-size: 1.5rem;
             color: #2c5282;
-            margin-bottom: 40px;
+            margin-bottom: 25px; /* 縮小間距 */
             font-weight: 400;
         }
 
         .hero-quote {
-            max-width: 600px;
-            margin: 0 auto 40px auto;
+            /* Level 3: Medium/Body */
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 30px auto; /* 縮小間距 */
             border-left: 4px solid var(--accent-yellow);
             padding-left: 20px;
             text-align: left;
             background: #fff;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.8;
+            padding: 15px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            color: #444;
+            line-height: 1.6;
         }
 
         .hero-btn {
+            /* Level 3: Button */
+            font-size: 1rem;
             display: inline-block;
             background-color: #2b6cb0;
             color: white;
             text-decoration: none;
-            padding: 12px 30px;
+            padding: 10px 30px;
             border-radius: 4px;
             font-weight: 600;
             transition: transform 0.2s;
         }
 
-        .hero-btn:hover {
-            transform: translateY(-2px);
-        }
+        .hero-btn:hover { transform: translateY(-2px); }
 
         .meta-tag {
-            font-size: 0.75rem;
+            /* Level 5: Smallest */
+            font-size: 0.8rem;
             color: #999;
             margin-top: 15px;
+            letter-spacing: 0.5px;
         }
 
-        /* --- 3. Philosophy Section (Layer 2 - RESTORED) --- */
+        /* --- 3. Philosophy Section (Compact & Reordered) --- */
         .philosophy-section {
-            padding: 100px 0;
+            /* 壓縮間距，確保不需捲動即可見 */
+            padding: 40px 0 60px 0; 
             background-color: #fff;
         }
 
         .philosophy-header {
             text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .philo-sub {
-            color: #2b6cb0;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
+            margin-bottom: 40px; /* 縮小與卡片的距離 */
         }
 
         .philo-heading {
-            font-size: 1.8rem;
+            /* Level 2: Section Title */
+            font-size: 1.6rem;
             font-weight: 700;
             color: #111;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
+            margin-bottom: 5px; /* 緊貼下方的英文 */
         }
 
-        /* 標題下方的黃色小底線 */
-        .philo-heading::after {
+        .philo-sub {
+            /* Level 3: Adjusted English Title */
+            color: #2b6cb0;
+            font-size: 1.1rem; /* 字體放大 */
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px; /* 給黃線空間 */
+        }
+
+        /* 黃線移到 MY PHILOSOPHY 下方 */
+        .philo-sub::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
+            width: 50px;
             height: 3px;
             background-color: var(--accent-yellow);
         }
 
         .philo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; /* 縮小卡片間距 */
         }
 
         .philo-card {
             background: #f8fafc;
-            padding: 30px;
+            padding: 25px; /* 卡片內距縮小 */
             border-radius: 8px;
             border: 1px solid #f1f5f9;
             transition: all 0.3s ease;
@@ -204,51 +197,52 @@
 
         .philo-card:hover {
             background: #fff;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
         }
 
         .philo-title {
+            /* Level 2 equivalent */
             font-size: 1.4rem;
             font-weight: 700;
             color: #1e293b;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .philo-block {
-            margin-bottom: 20px;
-        }
+        .philo-block { margin-bottom: 15px; }
 
         .philo-label {
-            font-size: 0.7rem;
+            /* Level 5 */
+            font-size: 0.8rem;
             font-weight: 800;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             display: block;
         }
 
-        .label-why { color: #2563eb; } /* 藍色 WHY */
-        .label-how { color: #d97706; } /* 黃橘色 HOW */
+        .label-why { color: #2563eb; }
+        .label-how { color: #d97706; }
 
         .philo-text {
-            font-size: 0.9rem;
+            /* Level 4: Body text */
+            font-size: 0.95rem;
             color: #64748b;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
-        /* --- 4. Projects Section (Layer 3) --- */
+        /* --- 4. Projects Section --- */
         .projects-section {
             background-color: #f8f9fa;
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
         .projects-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
-        .projects-header h2 { font-size: 2rem; margin-bottom: 10px; color: #111; }
-        .projects-header p { color: #666; }
+        .projects-header h2 { font-size: 1.8rem; margin-bottom: 5px; color: #111; }
+        .projects-header p { color: #666; font-size: 1rem; }
 
         .projects-grid {
             display: grid;
@@ -269,10 +263,7 @@
             border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
         .card-image {
             height: 200px;
@@ -281,67 +272,34 @@
         }
 
         .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
         }
+        .project-card:hover .card-image img { transform: scale(1.05); }
 
-        .project-card:hover .card-image img {
-            transform: scale(1.05);
-        }
-
-        .card-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
+        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
 
         .card-tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: inline-block;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px;
+            padding: 4px 8px; border-radius: 4px; display: inline-block;
         }
-
         .tag-strategy { background: #e0f2fe; color: #0284c7; }
         .tag-ai { background: #fef9c3; color: #ca8a04; }
         .tag-data { background: #f3f4f6; color: #4b5563; }
 
-        .card-title {
-            font-size: 1.2rem;
-            margin: 0 0 10px 0;
-            color: #111;
-        }
-
-        .card-text {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
+        .card-title { font-size: 1.25rem; margin: 0 0 10px 0; color: #111; }
+        .card-text { font-size: 0.95rem; color: #666; margin-bottom: 20px; flex-grow: 1; }
 
         .card-link-text {
-            color: var(--primary-blue);
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
+            color: var(--primary-blue); font-size: 0.9rem; font-weight: 600;
+            display: flex; align-items: center;
         }
         .card-link-text::after { content: '→'; margin-left: 5px; transition: margin-left 0.2s; }
         .project-card:hover .card-link-text::after { margin-left: 10px; }
 
         /* --- Footer --- */
         footer {
-            background-color: var(--dark-navy);
-            color: #94a3b8;
-            text-align: center;
-            padding: 40px 0;
-            font-size: 0.85rem;
+            background-color: var(--dark-navy); color: #94a3b8;
+            text-align: center; padding: 40px 0; font-size: 0.85rem;
         }
     </style>
 </head>
@@ -376,20 +334,18 @@
     <section class="philosophy-section">
         <div class="container">
             <div class="philosophy-header">
-                <span class="philo-sub">MY PHILOSOPHY</span>
                 <div class="philo-heading">縱向深耕策略 · 橫向整合價值</div>
+                <div class="philo-sub">MY PHILOSOPHY</div>
             </div>
 
             <div class="philo-grid">
                 
                 <div class="philo-card">
                     <div class="philo-title">Integration</div>
-                    
                     <div class="philo-block">
                         <span class="philo-label label-why">WHY (痛點思維)</span>
                         <div class="philo-text">單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，洞察內耗。</div>
                     </div>
-
                     <div class="philo-block">
                         <span class="philo-label label-how">HOW (落地執行)</span>
                         <div class="philo-text">透過流程自動化技術串接斷點，建立標準化流程，讓系統為人服務。</div>
@@ -398,12 +354,10 @@
 
                 <div class="philo-card">
                     <div class="philo-title">Product</div>
-                    
                     <div class="philo-block">
                         <span class="philo-label label-why">WHY (價值思維)</span>
                         <div class="philo-text">產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。</div>
                     </div>
-
                     <div class="philo-block">
                         <span class="philo-label label-how">HOW (策略規劃)</span>
                         <div class="philo-text">從使用者旅程出發，在最小可行性產品(MVP)中獲取反饋，用技術實現創意。</div>
@@ -412,12 +366,10 @@
 
                 <div class="philo-card">
                     <div class="philo-title">Data</div>
-                    
                     <div class="philo-block">
                         <span class="philo-label label-why">WHY (客觀思維)</span>
                         <div class="philo-text">直覺會有偏差，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。</div>
                     </div>
-
                     <div class="philo-block">
                         <span class="philo-label label-how">HOW (透視洞察)</span>
                         <div class="philo-text">將冰冷的數字轉化為可視化的洞察，監控關鍵指標，即時修正方向。</div>
