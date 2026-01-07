@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive BI Dashboard | Portfolio</title>
+    <style>
+        :root { --primary-blue: #0ea5e9; --dark-navy: #111827; --text-main: #333333; --text-light: #6b7280; --bg-light: #f9fafb; --white: #ffffff; }
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; color: var(--text-main); margin: 0; padding: 0; background-color: var(--white); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .nav-bar { padding: 20px 0; border-bottom: 1px solid #e5e7eb; margin-bottom: 40px; background-color: var(--white); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .back-link { text-decoration: none; color: var(--primary-blue); font-weight: 500; font-size: 1rem; display: inline-flex; align-items: center; transition: opacity 0.2s; }
+        .back-link:hover { opacity: 0.8; }
+        .back-link::before { content: '←'; margin-right: 8px; }
+        .project-meta { color: var(--text-light); font-size: 0.9rem; font-weight: 400; }
+        header { text-align: center; margin-bottom: 40px; }
+        .tag-data { background-color: transparent; color: var(--text-light); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 10px; }
+        h1 { font-size: 2.5rem; margin: 0 0 10px 0; color: #111; font-weight: 700; line-height: 1.2; }
+        .subtitle { font-size: 1.2rem; color: var(--text-light); font-weight: 400; }
+        .video-container { width: 100%; max-width: 960px; margin: 0 auto 60px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); background-color: #000; aspect-ratio: 16/9; }
+        video { width: 100%; height: 100%; display: block; object-fit: contain; }
+        .section-content { padding: 40px 0; }
+        .bg-grey { background-color: var(--bg-light); }
+        .bg-white { background-color: var(--white); }
+        h2 { font-size: 1.8rem; margin-top: 0; margin-bottom: 30px; text-align: center; color: #111; }
+        h3 { font-size: 1.25rem; margin-top: 30px; margin-bottom: 10px; color: var(--primary-blue); }
+        p, li { font-size: 1.05rem; color: #4b5563; margin-bottom: 15px; }
+        ul { padding-left: 20px; max-width: 800px; margin: 0 auto; }
+        .cta-section { background-color: var(--dark-navy); color: var(--white); text-align: center; padding: 80px 20px; }
+        .cta-section h2 { color: var(--white); font-size: 2.2rem; margin-bottom: 10px; }
+        .cta-section p { color: #94a3b8; margin-bottom: 30px; }
+        .cta-button { display: inline-block; background-color: var(--primary-blue); color: var(--white); padding: 14px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background-color 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .cta-button:hover { background-color: #0284c7; }
+        footer { background-color: var(--dark-navy); color: #64748b; text-align: center; padding-bottom: 40px; font-size: 0.9rem; border-top: none; }
+        .footer-text { color: #64748b; }
+        @media (max-width: 768px) { h1 { font-size: 2rem; } .nav-content { flex-direction: column; gap: 10px; } }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="container nav-content">
+            <a href="index-en.html" class="back-link">Back to Home</a>
+            <div class="project-meta">Portfolio | Interactive BI Dashboard</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="tag-data">DATA VISUALIZATION</div>
+            <h1>Interactive Business Intelligence Dashboard</h1>
+            <div class="subtitle">Breaking Data Silos | A Centralized Decision Hub for Ops, Marketing & Finance</div>
+        </header>
+
+        <div class="video-container">
+            <video controls autoplay muted loop playsinline>
+                <source src="project3-demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <section class="section-content bg-grey">
+        <div class="container">
+            <h2>📖 Background & Challenges</h2>
+            <p style="text-align: center;">Many SMEs face a "data-rich but insight-poor" dilemma during digital transformation:</p>
+            <ul>
+                <li><strong>Data Silos:</strong> Sales, marketing, and operations data live in disconnected systems, lacking a unified view.</li>
+                <li><strong>Strategic Disconnect:</strong> Dashboards often become vanity metrics for single departments, disconnected from overall company strategy.</li>
+                <li><strong>Lack of Financial Context:</strong> Sales teams can't see ROI, and finance teams can't see conversion rates, leading to fragmented decision-making.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section-content bg-white">
+        <div class="container">
+            <h2>💡 Solutions & Insights</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Prototyped with Gemini Canvas to create a cross-functional war room:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                <div>
+                    <h3>🔄 Cross-Unit Integration</h3>
+                    <p>Breaks down departmental barriers by unifying distributor, retail, and e-commerce data for omni-channel monitoring.</p>
+                </div>
+                <div>
+                    <h3>💰 Financial Perspective (ROI)</h3>
+                    <p>Goes beyond top-line revenue to include cost and ROI analysis, directly linking operational decisions to financial performance.</p>
+                </div>
+                <div>
+                    <h3>🤖 AI-Assisted Insights</h3>
+                    <p>Features a built-in "AI Perspective" module that automatically interprets trends and flags anomalies for rapid decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-content bg-grey">
+        <div class="container">
+            <h2>🤖 Gen AI Development</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                This project utilized <strong>Gemini Canvas</strong> and <strong>Vibe Code</strong> for collaborative development.
+                AI accelerated the process from "requirement gathering" to "interactive prototype" by generating data visualization logic and UI code, demonstrating the power of AI in business analytics.
+            </p>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; display: inline-block;">
+                    <strong>🛠️ Tech Stack:</strong> Gemini Canvas, Vibe Code, Data Visualization, Business Intelligence (BI) Logic
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to create value?</h2>
+            <p>Let's discuss how we can integrate strategy and technology.</p>
+            <a href="mailto:your-email@example.com" class="cta-button">Contact Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-text">&copy; 2026 Rowan Huang.</span>
+    </footer>
+
+</body>
+</html>
