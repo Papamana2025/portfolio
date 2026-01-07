@@ -31,14 +31,11 @@
             padding: 0 20px;
         }
 
-        .section-padding {
-            padding: 80px 0;
-        }
-
         /* --- 1. Top Navigation --- */
         nav {
             padding: 20px 0;
             background: #fff;
+            border-bottom: 1px solid #eee;
         }
         
         .nav-inner {
@@ -130,7 +127,7 @@
 
         .hero-btn {
             display: inline-block;
-            background-color: #2b6cb0; /* 深一點的藍色按鈕 */
+            background-color: #2b6cb0;
             color: white;
             text-decoration: none;
             padding: 12px 30px;
@@ -149,18 +146,18 @@
             margin-top: 15px;
         }
 
-        /* --- 3. Philosophy Section (Layer 2) --- */
+        /* --- 3. Philosophy Section (Layer 2 - RESTORED) --- */
         .philosophy-section {
+            padding: 100px 0;
             background-color: #fff;
-            border-top: 1px solid #f0f0f0;
         }
 
-        .section-header {
+        .philosophy-header {
             text-align: center;
             margin-bottom: 60px;
         }
 
-        .sub-label {
+        .philo-sub {
             color: #2b6cb0;
             font-size: 0.75rem;
             font-weight: 700;
@@ -170,64 +167,95 @@
             display: block;
         }
 
-        .section-heading {
+        .philo-heading {
             font-size: 1.8rem;
-            color: #111;
             font-weight: 700;
+            color: #111;
             position: relative;
             display: inline-block;
+            padding-bottom: 15px;
         }
 
-        .section-heading::after {
+        /* 標題下方的黃色小底線 */
+        .philo-heading::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 40px;
             height: 3px;
             background-color: var(--accent-yellow);
-            margin: 15px auto 0 auto;
         }
 
-        .grid-3 {
+        .philo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
-        .feature-card {
+        .philo-card {
             background: #f8fafc;
             padding: 30px;
             border-radius: 8px;
-            border-left: 4px solid transparent;
-            transition: all 0.3s;
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
         }
 
-        .feature-card:hover {
+        .philo-card:hover {
             background: #fff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-left-color: var(--primary-blue);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
             transform: translateY(-5px);
         }
 
-        .feature-title {
-            font-size: 1.2rem;
+        .philo-title {
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 15px;
             color: #1e293b;
+            margin-bottom: 20px;
         }
 
-        .feature-desc {
+        .philo-block {
+            margin-bottom: 20px;
+        }
+
+        .philo-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .label-why { color: #2563eb; } /* 藍色 WHY */
+        .label-how { color: #d97706; } /* 黃橘色 HOW */
+
+        .philo-text {
             font-size: 0.9rem;
             color: #64748b;
+            line-height: 1.6;
         }
-
-        .highlight { color: #d97706; font-weight: 600; font-size: 0.8rem; display: block; margin-bottom: 5px; }
 
         /* --- 4. Projects Section (Layer 3) --- */
         .projects-section {
-            background-color: #f8f9fa; /* 灰色背景，區隔層次 */
+            background-color: #f8f9fa;
+            padding: 80px 0;
         }
 
-        /* 這裡保留我們修好的 Project Card 樣式 */
+        .projects-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .projects-header h2 { font-size: 2rem; margin-bottom: 10px; color: #111; }
+        .projects-header p { color: #666; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
         .project-card {
             background: var(--white);
             border-radius: 12px;
@@ -324,7 +352,7 @@
             <div class="logo">ROWAN HUANG</div>
             <div class="nav-links">
                 <a href="#">核心觀點</a>
-                <a href="#">精選案例</a>
+                <a href="#projects">精選案例</a>
                 <a href="mailto:your-email@example.com" class="nav-btn">聯繫我</a>
             </div>
         </div>
@@ -345,41 +373,69 @@
         </div>
     </header>
 
-    <section class="section-padding philosophy-section">
+    <section class="philosophy-section">
         <div class="container">
-            <div class="section-header">
-                <span class="sub-label">MY PHILOSOPHY</span>
-                <div class="section-heading">縱向深耕策略 · 橫向整合價值</div>
+            <div class="philosophy-header">
+                <span class="philo-sub">MY PHILOSOPHY</span>
+                <div class="philo-heading">縱向深耕策略 · 橫向整合價值</div>
             </div>
 
-            <div class="grid-3">
-                <div class="feature-card">
-                    <span class="highlight">WHY (理解痛點)</span>
-                    <div class="feature-title">Integration</div>
-                    <div class="feature-desc">單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，洞察內耗。</div>
+            <div class="philo-grid">
+                
+                <div class="philo-card">
+                    <div class="philo-title">Integration</div>
+                    
+                    <div class="philo-block">
+                        <span class="philo-label label-why">WHY (痛點思維)</span>
+                        <div class="philo-text">單點優化無法解決系統性問題。必須打破資訊孤島，讓數據流動，洞察內耗。</div>
+                    </div>
+
+                    <div class="philo-block">
+                        <span class="philo-label label-how">HOW (落地執行)</span>
+                        <div class="philo-text">透過流程自動化技術串接斷點，建立標準化流程，讓系統為人服務。</div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <span class="highlight">WHY (理解思維)</span>
-                    <div class="feature-title">Product</div>
-                    <div class="feature-desc">產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。</div>
+
+                <div class="philo-card">
+                    <div class="philo-title">Product</div>
+                    
+                    <div class="philo-block">
+                        <span class="philo-label label-why">WHY (價值思維)</span>
+                        <div class="philo-text">產品的價值不在功能多寡，而在於是否解決真實痛點。以人為本，才能創造共鳴。</div>
+                    </div>
+
+                    <div class="philo-block">
+                        <span class="philo-label label-how">HOW (策略規劃)</span>
+                        <div class="philo-text">從使用者旅程出發，在最小可行性產品(MVP)中獲取反饋，用技術實現創意。</div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <span class="highlight">WHY (發掘光點)</span>
-                    <div class="feature-title">Data</div>
-                    <div class="feature-desc">當營收停滯，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。</div>
+
+                <div class="philo-card">
+                    <div class="philo-title">Data</div>
+                    
+                    <div class="philo-block">
+                        <span class="philo-label label-why">WHY (客觀思維)</span>
+                        <div class="philo-text">直覺會有偏差，數據不會說謊。在混亂的市場訊號中，尋找客觀的決策錨點。</div>
+                    </div>
+
+                    <div class="philo-block">
+                        <span class="philo-label label-how">HOW (透視洞察)</span>
+                        <div class="philo-text">將冰冷的數字轉化為可視化的洞察，監控關鍵指標，即時修正方向。</div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section-padding projects-section">
+    <section id="projects" class="projects-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-heading">精選案例</div>
-                <div style="color:#666; margin-top:10px; font-size:0.9rem;">從策略整合到開發實踐的完整軌跡</div>
+            <div class="projects-header">
+                <h2>精選案例</h2>
+                <p>從策略整合到開發實踐的完整軌跡</p>
             </div>
 
-            <div class="grid-3">
+            <div class="projects-grid">
                 
                 <a href="project1.html" class="project-card">
                     <div class="card-image">
